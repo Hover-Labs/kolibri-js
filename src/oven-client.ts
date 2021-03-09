@@ -181,7 +181,7 @@ export default class OvenClient {
       .times(totalPrinciple)
       .div(SHARD_PRECISION)
       .integerValue()
-    return newTotalTokens.minus(totalPrinciple)
+    return newTotalTokens.minus(borrowedTokens)
   }
 
   /**
