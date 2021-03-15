@@ -234,7 +234,7 @@ export default class StableCoinClient {
    */
   async getAllOvens(): Promise<Array<Oven>> {
     const response = await axios.get(
-      `http://kolibri-data.s3.amazonaws.com/${this.network}/oven-key-data.json`,
+      `https://kolibri-data.s3.amazonaws.com/${this.network}/oven-key-data.json`,
     )
     return response.data.ovenData
   }
