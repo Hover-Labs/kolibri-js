@@ -1,5 +1,4 @@
 import Network from './network'
-import BetterCallDevClient from './better-call-dev-client'
 import Address from './types/address'
 import OperationHash from './types/operation-hash'
 import { ThanosWallet } from '@thanos-wallet/dapp'
@@ -9,6 +8,7 @@ import Mutez from './types/mutez'
 import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
 import BigNumber from 'bignumber.js'
+import axios from 'axios'
 
 /** The number of seconds in a compound interest period */
 const COMPOUND_PERIOD_SECONDS = 60
@@ -54,9 +54,6 @@ export default class StableCoinClient {
   /** A TezosToolkit */
   private readonly tezos: TezosToolkit
 
-  /** Reference to an indexer client. */
-  private readonly indexerClient: BetterCallDevClient
-
   /**
    * Create a new StableCoinClient.
    *
@@ -77,7 +74,6 @@ export default class StableCoinClient {
     private readonly ovenFactoryAddress: Address,
   ) {
     this.tezos = new TezosToolkit(nodeUrl)
-    this.indexerClient = new BetterCallDevClient(this.network)
   }
 
   /**
@@ -237,19 +233,9 @@ export default class StableCoinClient {
    * @returns A list of all known ovens.
    */
   async getAllOvens(): Promise<Array<Oven>> {
-    const ovenRegistryContract: any = await this.tezos.contract.at(
-      this.ovenRegistryAddress,
+    const response = await axios.get(
+      `https://kolibri-data.s3.amazonaws.com/${this.network}/oven-key-data.json`,
     )
-    const ovenRegistryStorage: any = await ovenRegistryContract.storage()
-    const ovenRegistryBigMapId = await ovenRegistryStorage.ovenMap
-    const values = await this.indexerClient.getBigMapValues(
-      ovenRegistryBigMapId,
-    )
-    return values.map((value) => {
-      return {
-        ovenAddress: value.data.key.value,
-        ovenOwner: value.data.value.value,
-      }
-    })
+    return response.data.ovenData
   }
 }
