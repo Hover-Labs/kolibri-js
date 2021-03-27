@@ -18,6 +18,24 @@ const CONTRACTS = {
     PAUSE_GUARDIAN: 'KT1UNofBj6bhLq2KaSCdZ2sxJG3U8tn6B4GN',
     FUND_ADMIN: 'KT1P3iM8NS3421bFafvsLHBFSFA1vrzcarqo',
   },
+  // NOTE: This is Edo2Net but naming is 'EDO' for consistency.
+  EDO: {
+    MINTER: 'KT1HerTuyyZBEX5Gtr6GvCjwgPL36p4jPsXX',
+    OVEN_PROXY: 'KT1K3DSsQJha7HiYzVvuHUpEiubFPihPvq8Y',
+    OVEN_FACTORY: 'KT1BQH1okg2cMg88P8CwRgiNvUpNBSh87PKv',
+    TOKEN: 'KT1NSxh1bBJxHkT5ScXwzg4LcuNYQY1abrjR',
+    OVEN_REGISTRY: 'KT1VzD6ttSzh7tG8WNvVnkBMi7roRCUoDQk1',
+    DEVELOPER_FUND: 'KT1HKd8xE9nJe3JGMoE4hy4fHLvBiekd5Nnz',
+    STABILITY_FUND: 'KT1Gjexj6kdDPgf1GDTboCiJyUwGUBcu9bzc',
+    ORACLE: 'KT1AnzCgiibDXkWiakufXjBUeUtzuWNdNAXe',
+    HARBINGER_NORMALIZER: 'KT1RCNpUEDjZAYhabjzgz1ZfxQijCDVMEaTZ',
+    // Below values are not applicable to testnet deployment.
+    KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
+    DEXTER_POOL: '',
+    GOVERNOR: '',
+    PAUSE_GUARDIAN: '',
+    FUND_ADMIN: '',
+  },
   MAIN: {
     MINTER: 'KT1Ty2uAmF5JxWyeGrVpk17MEyzVB8cXs8aJ',
     OVEN_PROXY: 'KT1JdufSdfg3WyxWJcCRNsBFV9V3x9TQBkJ2',
