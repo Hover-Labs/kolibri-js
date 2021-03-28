@@ -11,7 +11,7 @@ const CONTRACTS = {
     OVEN_REGISTRY: 'KT1VzD6ttSzh7tG8WNvVnkBMi7roRCUoDQk1',
     DEVELOPER_FUND: 'KT1HKd8xE9nJe3JGMoE4hy4fHLvBiekd5Nnz',
     STABILITY_FUND: 'KT1Gjexj6kdDPgf1GDTboCiJyUwGUBcu9bzc',
-    ORACLE: 'KT1AnzCgiibDXkWiakufXjBUeUtzuWNdNAXe',
+    ORACLE: 'KT1AnzCgiibDXkWiakufXjBUeUtzuWNdNAXe',O
     HARBINGER_NORMALIZER: 'KT1RCNpUEDjZAYhabjzgz1ZfxQijCDVMEaTZ',
     // Below values are not applicable to testnet deployment.
     KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
