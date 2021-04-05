@@ -54,7 +54,7 @@ const CONTRACTS = {
     PAUSE_GUARDIAN: '',
     FUND_ADMIN: '',
 
-  }
+  },
   MAIN: {
     // Core Contracts
     MINTER: 'KT1Ty2uAmF5JxWyeGrVpk17MEyzVB8cXs8aJ',
