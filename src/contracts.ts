@@ -28,6 +28,33 @@ const CONTRACTS = {
     PAUSE_GUARDIAN: '',
     FUND_ADMIN: '',
   },
+  // Currently Florencenet No Baking Accounts.
+  NEXT: {
+    // Core Contracts
+    MINTER: '',
+    OVEN_PROXY: '',
+    OVEN_FACTORY: '',
+    TOKEN: '',
+    OVEN_REGISTRY: '',
+    DEVELOPER_FUND: '',
+    STABILITY_FUND: '',
+    ORACLE: '',
+
+    // Dependent contracts
+    HARBINGER_NORMALIZER: 'KT1PuT2NwwNjnxKy5XZEDZGHQNgdtLgN69i9',
+    // NOTE: Below values are not applicable to testnet deployment.
+    KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
+
+    // Liquidity Pools
+    DEXTER_POOL: '',
+    QUIPUSWAP_POOL: '',
+
+    // Governance Roles
+    GOVERNOR: '',
+    PAUSE_GUARDIAN: '',
+    FUND_ADMIN: '',
+
+  }
   MAIN: {
     // Core Contracts
     MINTER: 'KT1Ty2uAmF5JxWyeGrVpk17MEyzVB8cXs8aJ',
