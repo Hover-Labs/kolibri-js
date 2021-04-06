@@ -2,20 +2,20 @@
  * A property bag of known canonical contracts.
  */
 const CONTRACTS = {
-  // Currently Edo2Net.
+  // Currently Florencenet.
   TEST: {
     // Core Contracts
-    MINTER: 'KT1HerTuyyZBEX5Gtr6GvCjwgPL36p4jPsXX',
-    OVEN_PROXY: 'KT1K3DSsQJha7HiYzVvuHUpEiubFPihPvq8Y',
-    OVEN_FACTORY: 'KT1BQH1okg2cMg88P8CwRgiNvUpNBSh87PKv',
-    TOKEN: 'KT1NSxh1bBJxHkT5ScXwzg4LcuNYQY1abrjR',
-    OVEN_REGISTRY: 'KT1VzD6ttSzh7tG8WNvVnkBMi7roRCUoDQk1',
-    DEVELOPER_FUND: 'KT1HKd8xE9nJe3JGMoE4hy4fHLvBiekd5Nnz',
-    STABILITY_FUND: 'KT1Gjexj6kdDPgf1GDTboCiJyUwGUBcu9bzc',
-    ORACLE: 'KT1AnzCgiibDXkWiakufXjBUeUtzuWNdNAXe',
+    MINTER: 'KT1KE5Y2Fd9UzAC4XwpLYWRqXHB9z7HWvrYF',
+    OVEN_PROXY: 'KT1Vn25ue2srymaScZxJZtp6kc2V4rLQJP4R',
+    OVEN_FACTORY: 'KT1Q1oqQV2xJbWhv43MMi2XkKaDCmtUxwHtY',
+    TOKEN: 'KT1LWN8m9JMAzeV4nyfzpVigchr84NWGQbUw',
+    OVEN_REGISTRY: 'KT1Q9g8SDry6xaLACc1i3JYuoFc95Jhm5ev2',
+    DEVELOPER_FUND: 'KT1W362sRxV7gvdYZnAdRVD2eG1dmwKhN3kS',
+    STABILITY_FUND: 'KT1X6v5nRD3PH4SqyEXrMtUcGhL7v7gJaWz6',
+    ORACLE: 'KT1DVg3kBs9KZpz62pkrmLjgiS7qNDreuX8X',
 
     // Dependent contracts
-    HARBINGER_NORMALIZER: 'KT1RCNpUEDjZAYhabjzgz1ZfxQijCDVMEaTZ',
+    HARBINGER_NORMALIZER: 'KT1PuT2NwwNjnxKy5XZEDZGHQNgdtLgN69i9',
     // NOTE: Below values are not applicable to testnet deployment.
     KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
 
