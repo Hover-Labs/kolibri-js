@@ -15,7 +15,7 @@ const CONTRACTS = {
     ORACLE: 'KT1DVg3kBs9KZpz62pkrmLjgiS7qNDreuX8X',
 
     // Dependent contracts
-    HARBINGER_NORMALIZER: 'KT1PuT2NwwNjnxKy5XZEDZGHQNgdtLgN69i9',
+    HARBINGER_NORMALIZER: 'KT1SUP27JhX24Kvr11oUdWswk7FnCW78ZyUn',
     // NOTE: Below values are not applicable to testnet deployment.
     KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
 
