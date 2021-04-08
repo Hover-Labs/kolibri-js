@@ -3,7 +3,7 @@
  */
 const CONTRACTS = {
   // Currently Florencenet.
-  TEST: {
+  ZERO: {
     // Core Contracts
     MINTER: 'KT1KE5Y2Fd9UzAC4XwpLYWRqXHB9z7HWvrYF',
     OVEN_PROXY: 'KT1Vn25ue2srymaScZxJZtp6kc2V4rLQJP4R',
@@ -15,8 +15,30 @@ const CONTRACTS = {
     ORACLE: 'KT1DVg3kBs9KZpz62pkrmLjgiS7qNDreuX8X',
 
     // Dependent contracts
-    HARBINGER_NORMALIZER: 'KT1PuT2NwwNjnxKy5XZEDZGHQNgdtLgN69i9',
+    HARBINGER_NORMALIZER: 'KT1SUP27JhX24Kvr11oUdWswk7FnCW78ZyUn',
     // NOTE: Below values are not applicable to testnet deployment.
+    KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
+
+    // Liquidity Pools
+    DEXTER_POOL: '',
+    QUIPUSWAP_POOL: '',
+
+    // Governance Roles
+    GOVERNOR: '',
+    PAUSE_GUARDIAN: '',
+    FUND_ADMIN: '',
+  },
+  TEST: {
+    MINTER: 'KT1HerTuyyZBEX5Gtr6GvCjwgPL36p4jPsXX',
+    OVEN_PROXY: 'KT1K3DSsQJha7HiYzVvuHUpEiubFPihPvq8Y',
+    OVEN_FACTORY: 'KT1BQH1okg2cMg88P8CwRgiNvUpNBSh87PKv',
+    TOKEN: 'KT1NSxh1bBJxHkT5ScXwzg4LcuNYQY1abrjR',
+    OVEN_REGISTRY: 'KT1VzD6ttSzh7tG8WNvVnkBMi7roRCUoDQk1',
+    DEVELOPER_FUND: 'KT1HKd8xE9nJe3JGMoE4hy4fHLvBiekd5Nnz',
+    STABILITY_FUND: 'KT1Gjexj6kdDPgf1GDTboCiJyUwGUBcu9bzc',
+    ORACLE: 'KT1AnzCgiibDXkWiakufXjBUeUtzuWNdNAXe',
+    HARBINGER_NORMALIZER: 'KT1RCNpUEDjZAYhabjzgz1ZfxQijCDVMEaTZ',
+    // Below values are not applicable to testnet deployment.
     KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
 
     // Liquidity Pools
