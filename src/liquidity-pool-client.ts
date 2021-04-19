@@ -43,7 +43,7 @@ export default class LiquidityPoolClient {
    * @param targetOvenAddress The oven to liquidate.
    * @returns The operation hash
    */
-  public async setBaker(
+  public async liquidate(
     targetOvenAddress: Address,
   ): Promise<TransactionOperation | TransactionWalletOperation> {
     const liquidityPoolContract = await this.tezos.wallet.at(
