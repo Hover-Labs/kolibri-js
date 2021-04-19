@@ -67,7 +67,7 @@ const CONTRACTS = {
 
     // Liquidity Pools
     DEXTER_POOL: 'KT1AbYeDbjjcAnV1QK7EZUUdqku77CdkTuv6',
-    QUIPUSWAP_POOL: 'KT1CiSKXR68qYSxnbzjwvfeMCRburaSDonT2',
+    QUIPUSWAP_POOL: 'KT1K4EwTpbvYN9agJdjpyJm4ZZdhpUNKB3F6',
 
     // Governance Roles
     GOVERNOR: 'KT1JBmbYxTv3xptk2CadgEdMfjUCUXKEfe5u',
