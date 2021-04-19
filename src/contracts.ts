@@ -16,12 +16,16 @@ const CONTRACTS = {
 
     // Dependent contracts
     HARBINGER_NORMALIZER: 'KT1SUP27JhX24Kvr11oUdWswk7FnCW78ZyUn',
-    // NOTE: Below values are not applicable to testnet deployment.
-    KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
 
-    // Liquidity Pools
+    // Kolibri Liqiudity Pool
+    LIQUIDITY_POOL: 'KT1GYqNCmUnJSA5AkXxRzwovaLHRHnQkp1zK',
+
+    // DEX Liquidity Pools
     DEXTER_POOL: '',
-    QUIPUSWAP_POOL: '',
+    QUIPUSWAP_POOL: 'KT1HWzVA95Ui3MeX8Pz5gQnnE1PT1DZjWJGE',
+
+    // Below values are not applicable to testnet deployment.
+    KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
 
     // Governance Roles
     GOVERNOR: '',
@@ -38,12 +42,16 @@ const CONTRACTS = {
     STABILITY_FUND: 'KT1Tm5b6xR5pWchW2nkJKfG9vRp7qSMjDxQn',
     ORACLE: 'KT1RHRDxB2NcPRzTti2Z2vL1aNQeKGxu8by8',
     HARBINGER_NORMALIZER: 'KT1RCNpUEDjZAYhabjzgz1ZfxQijCDVMEaTZ',
+
+    // Kolibri Liqiudity Pool
+    LIQUIDITY_POOL: 'KT1TTQL5Pv8KKfRDwXhsozNpLFAA76kzogiL',
+
+    // DEX Liquidity Pools
+    DEXTER_POOL: '',
+    QUIPUSWAP_POOL: 'KT1MHhqWBK1aaCQdAQ1YLkuZyK8J1JJJBDuR',
+
     // Below values are not applicable to testnet deployment.
     KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
-
-    // Liquidity Pools
-    DEXTER_POOL: '',
-    QUIPUSWAP_POOL: '',
 
     // Governance Roles
     GOVERNOR: '',
@@ -65,7 +73,10 @@ const CONTRACTS = {
     HARBINGER_NORMALIZER: 'KT1AdbYiPYb5hDuEuVrfxmFehtnBCXv4Np7r',
     KOLIBRI_BAKER: 'tz1abmz7jiCV2GH2u81LRrGgAFFgvQgiDiaf',
 
-    // Liquidity Pools
+    // Kolibri Liqiudity Pool
+    LIQUIDITY_POOL: 'KT1AxaBxkFLCUi3f8rdDAAxBKHfzY8LfKDRA',
+
+    // DEX Liquidity Pools
     DEXTER_POOL: 'KT1AbYeDbjjcAnV1QK7EZUUdqku77CdkTuv6',
     QUIPUSWAP_POOL: 'KT1K4EwTpbvYN9agJdjpyJm4ZZdhpUNKB3F6',
 
