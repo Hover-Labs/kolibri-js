@@ -48,7 +48,7 @@ const CONTRACTS = {
 
     // DEX Liquidity Pools
     DEXTER_POOL: '',
-    QUIPUSWAP_POOL: 'KT1MHhqWBK1aaCQdAQ1YLkuZyK8J1JJJBDuR',
+    QUIPUSWAP_POOL: 'KT1NqgzR5SQEemduLcgHwKuX8yvZVAwN14kA',
 
     // Below values are not applicable to testnet deployment.
     KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
