@@ -3,6 +3,7 @@
  */
 enum Network {
   Delphi = 'delphinet',
+  Florence = 'florencenet',
   Mainnet = 'mainnet',
 }
 
