@@ -16,7 +16,7 @@ jest.setTimeout(30_000) // 30 seconds
 // Client under test
 const harbingerClient = new HarbingerClient(
   NODE_URL,
-  CONTRACTS.DELPHI.HARBINGER_NORMALIZER,
+  CONTRACTS.TEST.HARBINGER_NORMALIZER,
 )
 
 test('harbinger client - gets date', async function () {

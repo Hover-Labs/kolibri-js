@@ -23,9 +23,9 @@ const TEST_ACCOUNT_SECRET =
 const stableCoinClient = new StableCoinClient(
   NODE_URL,
   Network.Delphi,
-  CONTRACTS.DELPHI.OVEN_REGISTRY,
-  CONTRACTS.DELPHI.MINTER,
-  CONTRACTS.DELPHI.OVEN_FACTORY,
+  CONTRACTS.TEST.OVEN_REGISTRY,
+  CONTRACTS.TEST.MINTER,
+  CONTRACTS.TEST.OVEN_FACTORY,
 )
 
 // Time to sleep to let operations settle.
