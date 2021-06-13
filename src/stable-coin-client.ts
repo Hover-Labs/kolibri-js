@@ -65,6 +65,7 @@ export default class StableCoinClient {
    * @param ovenRegistryAddress The address of the OvenRegistry
    * @param minterAddress The address of the Minter.
    * @param ovenFactoryAddress The address of the OvenFactory.
+   * @param indexerURL An indexer url to use for querying all ovens. Must be BCD compatible
    */
   public constructor(
     nodeUrl: string,
@@ -72,6 +73,7 @@ export default class StableCoinClient {
     private readonly ovenRegistryAddress: Address,
     private readonly minterAddress: Address,
     private readonly ovenFactoryAddress: Address,
+    private readonly indexerURL?: string,
   ) {
     this.tezos = new TezosToolkit(nodeUrl)
   }
@@ -232,8 +234,8 @@ export default class StableCoinClient {
    *
    * @returns A list of all known ovens.
    */
-  async getAllOvens(indexerURL?: string): Promise<Array<Oven>> {
-    if (indexerURL === undefined) {
+  async getAllOvens(): Promise<Array<Oven>> {
+    if (this.indexerURL === undefined) {
       const response = await axios.get(
         `https://kolibri-data.s3.amazonaws.com/${this.network}/oven-key-data.json`,
       )
@@ -253,7 +255,7 @@ export default class StableCoinClient {
       // eslint-disable-next-line no-constant-condition
       while (true) {
         const values: AxiosResponse = await axios.get(
-          `${indexerURL}/v1/bigmap/sandboxnet/${ovenRegistryBigMapId}/keys?size=10&offset=${offset}`,
+          `${this.indexerURL}/v1/bigmap/sandboxnet/${ovenRegistryBigMapId}/keys?size=10&offset=${offset}`,
         )
         values.data.forEach((value: any) => {
           results.push({
@@ -263,7 +265,6 @@ export default class StableCoinClient {
         })
 
         if (values.data.length < 10) {
-          console.log('Breaking')
           break
         }
 
