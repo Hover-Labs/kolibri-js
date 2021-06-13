@@ -8,7 +8,7 @@ import Mutez from './types/mutez'
 import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
 import BigNumber from 'bignumber.js'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 /** The number of seconds in a compound interest period */
 const COMPOUND_PERIOD_SECONDS = 60
@@ -232,10 +232,45 @@ export default class StableCoinClient {
    *
    * @returns A list of all known ovens.
    */
-  async getAllOvens(): Promise<Array<Oven>> {
-    const response = await axios.get(
-      `https://kolibri-data.s3.amazonaws.com/${this.network}/oven-key-data.json`,
-    )
-    return response.data.ovenData
+  async getAllOvens(indexerURL?: string): Promise<Array<Oven>> {
+    if (indexerURL === undefined) {
+      const response = await axios.get(
+        `https://kolibri-data.s3.amazonaws.com/${this.network}/oven-key-data.json`,
+      )
+      return response.data.ovenData
+    } else {
+      const ovenRegistryContract = await this.tezos.contract.at(
+        this.ovenRegistryAddress,
+      )
+      const ovenRegistryStorage: any = await ovenRegistryContract.storage()
+      const ovenRegistryBigMapId = await ovenRegistryStorage.ovenMap
+
+      let offset = 0
+
+      const results: any[] = []
+
+      // Go paginate on the indexer URL 10 entries at a time
+      // eslint-disable-next-line no-constant-condition
+      while (true) {
+        const values: AxiosResponse = await axios.get(
+          `${indexerURL}/v1/bigmap/sandboxnet/${ovenRegistryBigMapId}/keys?size=10&offset=${offset}`,
+        )
+        values.data.forEach((value: any) => {
+          results.push({
+            ovenAddress: value.data.key.value,
+            ovenOwner: value.data.value.value,
+          })
+        })
+
+        if (values.data.length < 10) {
+          console.log('Breaking')
+          break
+        }
+
+        offset += 10
+      }
+
+      return results
+    }
   }
 }
