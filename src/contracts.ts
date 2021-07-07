@@ -1,62 +1,99 @@
 /**
  * A property bag of known canonical contracts.
  */
-const CONTRACTS = {
-  // Currently Florencenet.
+
+import { Contracts } from './types/contracts'
+
+const CONTRACTS: Contracts = {
+  // Currently Granada.
   ZERO: {
     // Core Contracts
-    MINTER: 'KT1XRZcTtAMSona8scisWHMqjS1mPY9MYgAs',
-    OVEN_PROXY: 'KT1SaLAE26yfEZNWDeMguHGynULz4MbXoo7i',
-    OVEN_FACTORY: 'KT1DzoRyZi5EH4RRutBLiFbfQiXVzUZPp2mz',
-    TOKEN: 'KT1TYGatFGXccm23ctedPScmkJZQjUN8n4iK',
-    OVEN_REGISTRY: 'KT1NCBuKhGcBbQUPegZV87NweGN6EyYotGUR',
-    DEVELOPER_FUND: 'KT1GaoN7QJf6BTBdAbBU4Sn2HkKBURYiKdWw',
-    STABILITY_FUND: 'KT1EED1wfZcYS796kCm5qUDf3fngxSF67gRR',
-    ORACLE: 'KT1Sf2MED2gU2tweMYaq7W9eoUgWZ5Fbxpdm',
+    MINTER: null,
+    OVEN_PROXY: null,
+    OVEN_FACTORY: null,
+    TOKEN: null,
+    OVEN_REGISTRY: null,
+    DEVELOPER_FUND: null,
+    STABILITY_FUND: null,
+    ORACLE: null,
 
     // Dependent contracts
-    HARBINGER_NORMALIZER: 'KT1SUP27JhX24Kvr11oUdWswk7FnCW78ZyUn',
+    HARBINGER_NORMALIZER: null,
 
     // Kolibri Liqiudity Pool
-    LIQUIDITY_POOL: 'KT1GYqNCmUnJSA5AkXxRzwovaLHRHnQkp1zK',
+    LIQUIDITY_POOL: null,
 
     // DEX Liquidity Pools
-    DEXTER_POOL: '',
-    QUIPUSWAP_POOL: 'KT1HWzVA95Ui3MeX8Pz5gQnnE1PT1DZjWJGE',
+    DEXTER_POOL: null,
+    QUIPUSWAP_POOL: null,
 
     // Below values are not applicable to testnet deployment.
-    KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
+    KOLIBRI_BAKER: null,
 
     // Governance Roles
-    GOVERNOR: '',
-    PAUSE_GUARDIAN: '',
-    FUND_ADMIN: '',
+    GOVERNOR: null,
+    PAUSE_GUARDIAN: null,
+    FUND_ADMIN: null,
+
+    // DAO
+    DAO: null,
+    DAO_TOKEN: null,
+    DAO_COMMUNITY_FUND: null,
+
+    // Farm Stuff
+    FARMS: {
+      KUSD: { farm: null, reserve: null },
+      QLKUSD: { farm: null, reserve: null },
+      KUSD_LP: { farm: null, reserve: null },
+    },
   },
+  // Currently Florencenet
   TEST: {
-    MINTER: 'KT1LcwYRFxHusTx3XxgkkEv1KWY7HzNcvZ7q',
-    OVEN_PROXY: 'KT1QVdiUpa3WjQmCniDKNrxZbz3d6UvrMRcP',
-    OVEN_FACTORY: 'KT1T7CCz7ebsrX9dGw2xzZJjQEtqADfCTi9s',
-    TOKEN: 'KT1H2pVoTj7HHLRuL443y6yk6eKTT3au6R4f',
-    OVEN_REGISTRY: 'KT1NM2J9qh73rEzmAucjcW6xiCZQMeurxkbg',
-    DEVELOPER_FUND: 'KT1F2TrccTgyjtEkTD3qcWpBAREWfAvhdRaC',
-    STABILITY_FUND: 'KT1NdxTp9YwLNkYJ4c3w4NSYcp1hwt2j2FTC',
-    ORACLE: 'KT1KP3od7vcQTtyb7S7ZcJyoCjbUbMubrxZW',
+    MINTER: 'KT1D9u1ef1VzRZx8AjpsLJCqv4uPFLmzdT5W',
+    OVEN_PROXY: 'KT1X1BYZF3wP9EAZ7okYv87zhkrTKbDjug26',
+    OVEN_FACTORY: 'KT1Tyq8vniz3XkpkhDmZti7dsNcfGHu67cLr',
+    TOKEN: 'KT1HXo8XvX5ocv7CVxL4j4MAbkdQ2cN9iYnt',
+    OVEN_REGISTRY: 'KT1VxKv1vK6uBs13sMLaRRrUXR9R2L2LNKdZ',
+    DEVELOPER_FUND: 'KT1QVurDjLM8f5raBqk6JgKamKU1iWSAmoBC',
+    STABILITY_FUND: 'KT1UhVNRdzSrriNdbcbBkQqqekTD6kkbSC9T',
+    ORACLE: 'KT1AqL2o5PLzJKBdt8hvC3kSLRHUPYDrnPeY',
     HARBINGER_NORMALIZER: 'KT1SUP27JhX24Kvr11oUdWswk7FnCW78ZyUn',
 
     // Kolibri Liquidity Pool
-    LIQUIDITY_POOL: 'KT1EpuFW6E4VUDE6UcxdRXBzf79W7Eo5mEBR',
+    LIQUIDITY_POOL: 'KT1BdG1nhvkERTxT54PEguqwBxmvMPv3cnXT',
 
     // DEX Liquidity Pools
-    DEXTER_POOL: '',
-    QUIPUSWAP_POOL: 'KT1NqgzR5SQEemduLcgHwKuX8yvZVAwN14kA',
+    DEXTER_POOL: null,
+    QUIPUSWAP_POOL: 'KT1NXCok7TeTd83y4zQPPJDFD13PmjkXJYZR',
 
     // Below values are not applicable to testnet deployment.
-    KOLIBRI_BAKER: 'tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5',
+    KOLIBRI_BAKER: 'tz1burnburnburnburnburnburnburjAYjjX',
 
     // Governance Roles
-    GOVERNOR: '',
-    PAUSE_GUARDIAN: '',
-    FUND_ADMIN: '',
+    GOVERNOR: 'KT1MXu5TeCGawRrUUzm4FNbYmXfmUH9CWn9E',
+    PAUSE_GUARDIAN: 'KT18fXMqzPastzmV7x39Aci25V5Aecy7iary',
+    FUND_ADMIN: null,
+
+    // DAO
+    DAO: 'KT1CPgrVxyjGodR85ThAQCYgQwVJGB9HwpJR',
+    DAO_TOKEN: 'KT1QaYndtyAs12EdUWBb5vWUnY5JWD4CpHdE',
+    DAO_COMMUNITY_FUND: 'KT1E1E3C9fkqKBdFxBjgicMUMkfy1WgvVDpx',
+
+    // Farm Stuff
+    FARMS: {
+      KUSD: {
+        farm: 'KT1JxGBRxMHjsTEbngoS1tngssHaH2qsWFfR',
+        reserve: 'KT1VKkZaVfE4B4H7HT9hJUwU2RKGg1VtgUwq',
+      },
+      QLKUSD: {
+        farm: 'KT1UFJyomYDoqfq3iAA9VcrTVZ6hdZRHHhr9',
+        reserve: 'KT19aGWgJWn3jdWsnax2tyaJEPWAAYz3Zxpe',
+      },
+      KUSD_LP: {
+        farm: 'KT1Pujim4kvDhcav5wSddfkvUkqVHbYASr9S',
+        reserve: 'KT1MDGh6gbyvTft7YHWyRzrzthFAjBo8w2Ax',
+      },
+    },
   },
   MAIN: {
     // Core Contracts
@@ -84,6 +121,18 @@ const CONTRACTS = {
     GOVERNOR: 'KT1JBmbYxTv3xptk2CadgEdMfjUCUXKEfe5u',
     PAUSE_GUARDIAN: 'KT1VWKfxhcwJ8H7aRYEYjwaqAfBSQk4J7zAw',
     FUND_ADMIN: 'KT1Le2tWBZv8KLQKJmZfLTVYiyaTELtx6zQW',
+
+    // DAO
+    DAO: null,
+    DAO_TOKEN: null,
+    DAO_COMMUNITY_FUND: null,
+
+    // Farm Stuff
+    FARMS: {
+      KUSD: { farm: null, reserve: null },
+      QLKUSD: { farm: null, reserve: null },
+      KUSD_LP: { farm: null, reserve: null },
+    },
   },
 }
 
