@@ -26,6 +26,7 @@ export type ContractGroup = {
   // Governance Roles
   GOVERNOR: DeployedContractAddressOrNull
   PAUSE_GUARDIAN: DeployedContractAddressOrNull
+  BREAK_GLASS_MULTISIG: DeployedContractAddressOrNull
   FUND_ADMIN: DeployedContractAddressOrNull
 
   // DAO
