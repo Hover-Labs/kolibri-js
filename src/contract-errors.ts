@@ -82,6 +82,9 @@ enum ContractErrors {
 
   // The operation was not performed by the token administrator.
   TokenNotAdministrator = 24,
+
+  // The operation was not performed by the savings account.
+  NotSavingsAccount = 25,
 }
 
 export default ContractErrors
