@@ -132,9 +132,18 @@ const CONTRACTS: Contracts = {
 
     // Farm Stuff
     FARMS: {
-      KUSD: { farm: 'KT1HDXjPtjv7Y7XtJxrNc5rNjnegTi2ZzNfv', reserve: 'KT1GmtXscYcFhgpcXDuY6Dk6hYqpErsYmxp2' },
-      QLKUSD: { farm: 'KT18oxtA5uyhyYXyAVhTa7agJmxHCTjHpiF7', reserve: 'KT1XqMecdis3bZTeLQn6qVYPsWNoh9cWtbot' },
-      KUSD_LP: { farm: 'KT1RB179ddATKbCi7E8ben91bo2hqRRPrNQf', reserve: 'KT1UUZvqqBpR6oku4YDxb1oDDfxrfiKaAMgA' },
+      KUSD: {
+        farm: 'KT1HDXjPtjv7Y7XtJxrNc5rNjnegTi2ZzNfv',
+        reserve: 'KT1GmtXscYcFhgpcXDuY6Dk6hYqpErsYmxp2',
+      },
+      QLKUSD: {
+        farm: 'KT18oxtA5uyhyYXyAVhTa7agJmxHCTjHpiF7',
+        reserve: 'KT1XqMecdis3bZTeLQn6qVYPsWNoh9cWtbot',
+      },
+      KUSD_LP: {
+        farm: 'KT1RB179ddATKbCi7E8ben91bo2hqRRPrNQf',
+        reserve: 'KT1UUZvqqBpR6oku4YDxb1oDDfxrfiKaAMgA',
+      },
     },
   },
 }
