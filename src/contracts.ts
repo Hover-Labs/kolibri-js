@@ -122,19 +122,19 @@ const CONTRACTS: Contracts = {
     // Governance Roles
     GOVERNOR: 'KT1JBmbYxTv3xptk2CadgEdMfjUCUXKEfe5u',
     PAUSE_GUARDIAN: 'KT1VWKfxhcwJ8H7aRYEYjwaqAfBSQk4J7zAw',
-    BREAK_GLASS_MULTISIG: null,
+    BREAK_GLASS_MULTISIG: 'KT1PQXekmMqzhT1NHn9QmehEFKQWbkvM6eP2',
     FUND_ADMIN: 'KT1Le2tWBZv8KLQKJmZfLTVYiyaTELtx6zQW',
 
     // DAO
-    DAO: null,
-    DAO_TOKEN: null,
-    DAO_COMMUNITY_FUND: null,
+    DAO: 'KT1WZ1HJyx5wPt96ZTjtWPotoPUk7pXNPfT2',
+    DAO_TOKEN: 'KT1JkoE42rrMBP9b2oDhbx6EUr26GcySZMUH',
+    DAO_COMMUNITY_FUND: 'KT1RyoAZJ3za3FzYsTJYvqzzq4oEW5xnumdQ',
 
     // Farm Stuff
     FARMS: {
-      KUSD: { farm: null, reserve: null },
-      QLKUSD: { farm: null, reserve: null },
-      KUSD_LP: { farm: null, reserve: null },
+      KUSD: { farm: 'KT1HDXjPtjv7Y7XtJxrNc5rNjnegTi2ZzNfv', reserve: 'KT1GmtXscYcFhgpcXDuY6Dk6hYqpErsYmxp2' },
+      QLKUSD: { farm: 'KT18oxtA5uyhyYXyAVhTa7agJmxHCTjHpiF7', reserve: 'KT1XqMecdis3bZTeLQn6qVYPsWNoh9cWtbot' },
+      KUSD_LP: { farm: 'KT1RB179ddATKbCi7E8ben91bo2hqRRPrNQf', reserve: 'KT1UUZvqqBpR6oku4YDxb1oDDfxrfiKaAMgA' },
     },
   },
 }
