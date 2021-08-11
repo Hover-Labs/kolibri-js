@@ -23,9 +23,14 @@ const CONTRACTS: Contracts = {
     // Kolibri Liqiudity Pool
     LIQUIDITY_POOL: null,
 
-    // DEX Liquidity Pools
-    DEXTER_POOL: null,
-    QUIPUSWAP_POOL: null,
+    // Dex Configurations
+    DEXES: {
+      QUIPUSWAP: {
+        QUIPUSWAP_POOL: null,
+        QUIPUSWAP_FA1_2_FACTORY: null,
+        QUIPUSWAP_FA2_FACTORY: null,
+      }
+    }
 
     // Below values are not applicable to testnet deployment.
     KOLIBRI_BAKER: null,
@@ -63,9 +68,14 @@ const CONTRACTS: Contracts = {
     // Kolibri Liquidity Pool
     LIQUIDITY_POOL: 'KT19RUbUUizsy7arXiziEi9d2nfJNMG74KxS',
 
-    // DEX Liquidity Pools
-    DEXTER_POOL: null,
-    QUIPUSWAP_POOL: 'KT1XcRsVNqvwRNyfoqZaKenPT2mQdLd2d8fS',
+    // Dex Configurations
+    DEXES: {
+      QUIPUSWAP: {
+        QUIPUSWAP_POOL: "KT1XcRsVNqvwRNyfoqZaKenPT2mQdLd2d8fS",
+        QUIPUSWAP_FA1_2_FACTORY: 'KT195gyo5G7pay2tYweWDeYFkGLqcvQTXoCW',
+        QUIPUSWAP_FA2_FACTORY: 'KT1HjLwPC3sbh6W5HjaKBsiVPTgptcNbnXnc',
+      }
+    },
 
     // Below values are not applicable to testnet deployment.
     KOLIBRI_BAKER: 'tz1burnburnburnburnburnburnburjAYjjX',
@@ -115,9 +125,15 @@ const CONTRACTS: Contracts = {
     // Kolibri Liqiudity Pool
     LIQUIDITY_POOL: 'KT1AxaBxkFLCUi3f8rdDAAxBKHfzY8LfKDRA',
 
-    // DEX Liquidity Pools
-    DEXTER_POOL: 'KT1AbYeDbjjcAnV1QK7EZUUdqku77CdkTuv6',
-    QUIPUSWAP_POOL: 'KT1K4EwTpbvYN9agJdjpyJm4ZZdhpUNKB3F6',
+    // DEX Configurations
+    // Dex Configurations
+    DEXES: {
+      QUIPUSWAP: {
+        QUIPUSWAP_POOL: "KT1K4EwTpbvYN9agJdjpyJm4ZZdhpUNKB3F6",
+        QUIPUSWAP_FA1_2_FACTORY: 'KT1Lw8hCoaBrHeTeMXbqHPG4sS4K1xn7yKcD',
+        QUIPUSWAP_FA2_FACTORY: 'KT1SwH9P1Tx8a58Mm6qBExQFTcy2rwZyZiXS',
+      }
+    },
 
     // Governance Roles
     GOVERNOR: 'KT1JBmbYxTv3xptk2CadgEdMfjUCUXKEfe5u',

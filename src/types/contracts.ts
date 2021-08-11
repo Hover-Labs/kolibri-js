@@ -16,9 +16,18 @@ export type ContractGroup = {
   // Kolibri Liqiudity Pool
   LIQUIDITY_POOL: DeployedContractAddressOrNull
 
-  // DEX Liquidity Pools
-  DEXTER_POOL: DeployedContractAddressOrNull
+  // DEX Configurations
+  DEXES: {
+    QUIPUSWAP: {
+      QUIPUSWAP_POOL: DeployedContractAddressOrNull
+      QUIPUSWAP_FA1_2_FACTORY: DeployedContractAddressOrNull
+      QUIPUSWAP_FA2_FACTORY: DeployedContractAddressOrNull
+    }
+  }
+
   QUIPUSWAP_POOL: DeployedContractAddressOrNull
+  QUIPUSWAP_FA1_2_FACTORY: DeployedContractAddressOrNull
+  QUIPUSWAP_FA2_FACTORY: DeployedContractAddressOrNull
 
   // Below values are not applicable to testnet deployment.
   KOLIBRI_BAKER: DeployedContractAddressOrNull
