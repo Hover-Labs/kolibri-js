@@ -19,15 +19,11 @@ export type ContractGroup = {
   // DEX Configurations
   DEXES: {
     QUIPUSWAP: {
-      QUIPUSWAP_POOL: DeployedContractAddressOrNull
-      QUIPUSWAP_FA1_2_FACTORY: DeployedContractAddressOrNull
-      QUIPUSWAP_FA2_FACTORY: DeployedContractAddressOrNull
+      POOL: DeployedContractAddressOrNull
+      FA1_2_FACTORY: DeployedContractAddressOrNull
+      FA2_FACTORY: DeployedContractAddressOrNull
     }
   }
-
-  QUIPUSWAP_POOL: DeployedContractAddressOrNull
-  QUIPUSWAP_FA1_2_FACTORY: DeployedContractAddressOrNull
-  QUIPUSWAP_FA2_FACTORY: DeployedContractAddressOrNull
 
   // Below values are not applicable to testnet deployment.
   KOLIBRI_BAKER: DeployedContractAddressOrNull
