@@ -71,7 +71,7 @@ const CONTRACTS: Contracts = {
     HARBINGER_NORMALIZER: 'KT1AQuWowr3WKwF69oTGcKaJrMajic3CKwR2',
 
     // Kolibri Liquidity Pool
-    LIQUIDITY_POOL: 'KT1AQuWowr3WKwF69oTGcKaJrMajic3CKwR2',
+    LIQUIDITY_POOL: 'KT1Fk7oJvpjtKga11TiYxMsuePD89UTDmUUF',
 
     // DEX Configurations
     DEXES: {
