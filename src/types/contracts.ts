@@ -22,6 +22,11 @@ export type ContractGroup = {
       POOL: DeployedContractAddressOrNull
       FA1_2_FACTORY: DeployedContractAddressOrNull
       FA2_FACTORY: DeployedContractAddressOrNull
+    },
+    PLENTY: {
+      POOL: DeployedContractAddressOrNull,
+      PLENTY_QUIPUSWAP_POOL: DeployedContractAddressOrNull,
+      PLENTY_TOKEN: DeployedContractAddressOrNull,
     }
   }
 
