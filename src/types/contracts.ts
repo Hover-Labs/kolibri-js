@@ -26,6 +26,7 @@ export type ContractGroup = {
     PLENTY: {
       POOL: DeployedContractAddressOrNull,
       PLENTY_QUIPUSWAP_POOL: DeployedContractAddressOrNull,
+      PLENTY_TOKEN: DeployedContractAddressOrNull,
     }
   }
 

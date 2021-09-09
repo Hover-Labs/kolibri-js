@@ -32,7 +32,8 @@ const CONTRACTS: Contracts = {
       },
       PLENTY: {
         POOL: null,
-        PLENTY_QUIPUSWAP_POOL: null
+        PLENTY_QUIPUSWAP_POOL: null,
+        PLENTY_TOKEN: null
       }
     },
 
@@ -81,7 +82,8 @@ const CONTRACTS: Contracts = {
       },
       PLENTY: {
         POOL: null,
-        PLENTY_QUIPUSWAP_POOL: null
+        PLENTY_QUIPUSWAP_POOL: null,
+        PLENTY_TOKEN: null,
       }
     },
 
@@ -142,7 +144,8 @@ const CONTRACTS: Contracts = {
       },
       PLENTY: {
         POOL: "KT1UNBvCJXiwJY6tmHM7CJUVwNPew53XkSfh",
-        PLENTY_QUIPUSWAP_POOL: "KT1X1LgNkQShpF9nRLYw3Dgdy4qp38MX617z"
+        PLENTY_QUIPUSWAP_POOL: "KT1X1LgNkQShpF9nRLYw3Dgdy4qp38MX617z",
+        PLENTY_TOKEN: "KT1GRSvLoikDsXujKgZPsGLX8k8VvR2Tq95b"
       }
     },
 
