@@ -88,7 +88,7 @@ export default class OvenClient {
   public async getBaker(): Promise<Address | null> {
     try {
       return await this.tezos.rpc.getDelegate(this.ovenAddress)
-    } catch (e) {
+    } catch (e: any) {
       // If 404 was received then the baker is actually just null.
       // See:
       // - https://github.com/ecadlabs/taquito/issues/556
