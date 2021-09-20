@@ -104,9 +104,7 @@ export default class StableCoinClient {
     }
 
     // Invoke contract.
-    const ovenFactoryContract = await this.tezos.wallet.at(
-      this.ovenFactoryAddress,
-    )
+    const ovenFactoryContract = await this.tezos.wallet.at(this.ovenFactoryAddress)
 
     return ovenFactoryContract.methods.makeOven([['unit']]).send()
   }
@@ -236,14 +234,10 @@ export default class StableCoinClient {
    */
   async getAllOvens(): Promise<Array<Oven>> {
     if (this.indexerURL === undefined) {
-      const response = await axios.get(
-        `https://kolibri-data.s3.amazonaws.com/${this.network}/oven-key-data.json`,
-      )
+      const response = await axios.get(`https://kolibri-data.s3.amazonaws.com/${this.network}/oven-key-data.json`)
       return response.data.ovenData
     } else {
-      const ovenRegistryContract = await this.tezos.contract.at(
-        this.ovenRegistryAddress,
-      )
+      const ovenRegistryContract = await this.tezos.contract.at(this.ovenRegistryAddress)
       const ovenRegistryStorage: any = await ovenRegistryContract.storage()
       const ovenRegistryBigMapId = await ovenRegistryStorage.ovenMap
 

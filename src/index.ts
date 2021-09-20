@@ -1,9 +1,6 @@
 export { default as CONTRACTS } from './contracts'
 export { default as Address } from './types/address'
-export {
-  default as HarbingerClient,
-  HarbingerPriceFeedData,
-} from './harbinger-client'
+export { default as HarbingerClient, HarbingerPriceFeedData } from './harbinger-client'
 export { default as Network } from './network'
 export { default as StableCoinClient } from './stable-coin-client'
 export { default as OvenClient } from './oven-client'

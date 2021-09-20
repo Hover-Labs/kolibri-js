@@ -26,10 +26,7 @@ export default class HarbingerClient {
    * @param nodeUrl The URL of the node to connect to.
    * @param normalizerAddress The address of the Normalizer contract to read from.
    */
-  public constructor(
-    nodeUrl: string,
-    public readonly normalizerAddress: Address,
-  ) {
+  public constructor(nodeUrl: string, public readonly normalizerAddress: Address) {
     this.tezos = new TezosToolkit(nodeUrl)
   }
 
@@ -37,9 +34,7 @@ export default class HarbingerClient {
    * Retrieve price feed data.
    */
   public async getPriceData(): Promise<HarbingerPriceFeedData> {
-    const normalizerContract = await this.tezos.contract.at(
-      this.normalizerAddress,
-    )
+    const normalizerContract = await this.tezos.contract.at(this.normalizerAddress)
     const normalizerStorage: any = await normalizerContract.storage()
     const assetData = await normalizerStorage.assetMap.get(ASSET_CODE)
 

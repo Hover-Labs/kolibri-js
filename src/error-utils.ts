@@ -4,8 +4,7 @@
 import ContractError from './contract-errors'
 
 /** A identifier for an item that will hold an explicit reason for the script failing. */
-const ERROR_ID_SCRIPT_REJECTED =
-  'proto.007-PsDELPH1.michelson_v1.script_rejected'
+const ERROR_ID_SCRIPT_REJECTED = 'proto.007-PsDELPH1.michelson_v1.script_rejected'
 
 const ErrorUtils = {
   /**

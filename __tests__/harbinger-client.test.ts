@@ -14,10 +14,7 @@ const NODE_URL = 'https://rpctest.tzbeta.net'
 jest.setTimeout(30_000) // 30 seconds
 
 // Client under test
-const harbingerClient = new HarbingerClient(
-  NODE_URL,
-  CONTRACTS.TEST.HARBINGER_NORMALIZER,
-)
+const harbingerClient = new HarbingerClient(NODE_URL, CONTRACTS.TEST.HARBINGER_NORMALIZER!)
 
 test('harbinger client - gets date', async function () {
   // GIVEN a Harbinger Client

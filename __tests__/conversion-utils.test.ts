@@ -12,16 +12,12 @@ test('conversion utils - shard to human readable decimal', function () {
   const input = new BigNumber('123456789000000000000')
   const expectedOutput = '123.456789'
 
-  expect(ConversionUtils.shardToHumanReadableNumber(input)).toEqual(
-    expectedOutput,
-  )
+  expect(ConversionUtils.shardToHumanReadableNumber(input)).toEqual(expectedOutput)
 })
 
 test('conversion utils - shard to human readable percent', function () {
   const input = new BigNumber('1234567890000000000')
   const expectedOutput = '123.456789%'
 
-  expect(ConversionUtils.shardToHumanReadablePercentage(input)).toEqual(
-    expectedOutput,
-  )
+  expect(ConversionUtils.shardToHumanReadablePercentage(input)).toEqual(expectedOutput)
 })

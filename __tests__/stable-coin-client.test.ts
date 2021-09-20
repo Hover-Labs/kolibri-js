@@ -16,16 +16,15 @@ const NODE_URL = 'https://rpctest.tzbeta.net'
 // A test account
 // TODO(keefertaylor): Refactor these constants to helpers.
 const TEST_ACCOUNT_ADDRESS = 'tz1YfB2H1NoZVUq4heHqrVX4oVp99yz8gwNq'
-const TEST_ACCOUNT_SECRET =
-  'edsk3aeocSRnxdWVFm3ShaALUeCTy4PgL6JdeGvzbLjX5jn8D9ZXw5'
+const TEST_ACCOUNT_SECRET = 'edsk3aeocSRnxdWVFm3ShaALUeCTy4PgL6JdeGvzbLjX5jn8D9ZXw5'
 
 // Token Client under test.
 const stableCoinClient = new StableCoinClient(
   NODE_URL,
   Network.Delphi,
-  CONTRACTS.TEST.OVEN_REGISTRY,
-  CONTRACTS.TEST.MINTER,
-  CONTRACTS.TEST.OVEN_FACTORY,
+  CONTRACTS.TEST.OVEN_REGISTRY!,
+  CONTRACTS.TEST.MINTER!,
+  CONTRACTS.TEST.OVEN_FACTORY!,
 )
 
 // Time to sleep to let operations settle.
@@ -84,9 +83,7 @@ test('stable coin client - gets collateralization ratio', async function () {
 
   // THEN the ratio is the expected value
   // TODO(keefertaylor): Wire conversion utils.
-  expect(
-    collateralizationRatio.isEqualTo(new BigNumber(200 * Math.pow(10, 18))),
-  ).toBeTruthy()
+  expect(collateralizationRatio.isEqualTo(new BigNumber(200 * Math.pow(10, 18)))).toBeTruthy()
 })
 
 test('stable coin client - gets interest rate data', async function () {
