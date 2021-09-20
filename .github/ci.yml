@@ -46,6 +46,7 @@ jobs:
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
+        if: github.ref == 'refs/heads/master' # Only deploy on merge to master
         with:
           branch: gh-pages
           folder: docs
