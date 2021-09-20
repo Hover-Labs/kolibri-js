@@ -52,9 +52,17 @@ const contracts: ContractGroup = {
     },
   },
 
-  // TODO: Need to find these values
-  VESTING_CONTRACTS: {},
+  VESTING_CONTRACTS: {
+    tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V:
+      'KT1DLXtc9NsmayRA6qUQqvmYZZFFU8UtRQMB',
+    tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB:
+      'KT1UEgx4By57wBjLz9GXQTMnnSyKdcYnpEQH',
+    tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV:
+      'KT1WeBq1j8pg9Z9WwNNB1jVTySChUbNYkRND',
+  },
+
   BREAK_GLASS_CONTRACTS: {
+    // Break glass were never deployed to these on granada testnet
     MINTER: null,
     OVEN_PROXY: null,
     OVEN_FACTORY: null,
@@ -64,8 +72,16 @@ const contracts: ContractGroup = {
     STABILITY_FUND: null,
     ORACLE: null,
     LIQUIDITY_POOL: null,
-    DAO_COMMUNITY_FUND: null,
-    VESTING_VAULTS: {},
+    // These contracts are always deployed with break glass...
+    DAO_COMMUNITY_FUND: 'KT1FzFgWsRewgNGP8nWvMykMiX7tekXbX1nS',
+    VESTING_VAULTS: {
+      tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V:
+        'KT1FgvFauNcxsoTFCd6ykjJWH5uPyjAnqgoS',
+      tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB:
+        'KT1XFsYrirqDRAkQe5wpEgGcNh1RX1RtXoiF',
+      tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV:
+        'KT1U9nCXqWvJTN6qBChYZDZZh87RwkcurqkJ',
+    },
   },
 }
 

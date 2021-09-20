@@ -52,20 +52,34 @@ const contracts: ContractGroup = {
     },
   },
 
-  // TODO: get these items
-  VESTING_CONTRACTS: {},
+  VESTING_CONTRACTS: {
+    tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V:
+      'KT1MBPwY93j5LN2u3UQcsEUDA927FfcxaTSr',
+    tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB:
+      'KT1AXRyS5bgWWSV77xU5yNXKgDQ7NE7rbnPH',
+    tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV:
+      'KT1H3Z1NWBEyUt1kzU1BV7GZZfMa991xPbDB',
+  },
+
   BREAK_GLASS_CONTRACTS: {
-    MINTER: null,
-    OVEN_PROXY: null,
-    OVEN_FACTORY: null,
-    TOKEN: null,
-    OVEN_REGISTRY: null,
-    DEVELOPER_FUND: null,
-    STABILITY_FUND: null,
-    ORACLE: null,
-    LIQUIDITY_POOL: null,
-    DAO_COMMUNITY_FUND: null,
-    VESTING_VAULTS: {},
+    MINTER: 'KT1AbZ25BiDxtAvwFcsnyzCBJzz6iZPPMVRk',
+    OVEN_PROXY: 'KT1SysbBUcNKWKZVrSiViGASqM5gF4qMuGtf',
+    OVEN_FACTORY: 'KT1Jo7Fd4HRrH3jRaMkqVMewi7EG7mD1mjgK',
+    TOKEN: 'KT1V56wAh8g51gm4UeFcN17NNS82vUuZwSwg',
+    OVEN_REGISTRY: 'KT1TjEEEPTE3nVsNX33T5Diqf8fNsE1HVYjA',
+    DEVELOPER_FUND: 'KT19QWUZJPnMxwCXnY2t7jsabsixm2en8rv1',
+    STABILITY_FUND: 'KT1UZ87trx6AEEumGAkqYnvLHuN6YjWoJDos',
+    ORACLE: 'KT1SowWqkYXHLKoHGufY5fWsu3hhTnjiPtCZ',
+    LIQUIDITY_POOL: 'KT19DRghrW6DRx2EPdU2d3vtb3BFp4aafoj9',
+    DAO_COMMUNITY_FUND: 'KT1AfVMYNWeopTmeidAgmJTjYwstNcwGsimF',
+    VESTING_VAULTS: {
+      tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V:
+        'KT1TBRnJYGtxWFooJj2e4BDAtJizyHgfkC6G',
+      tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB:
+        'KT1X9LArjPpoPpSxEoj2rfv6ojGEYokneyz9',
+      tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV:
+        'KT1RQkJHpaQXV4cfgwdjHuNatNRpgb9abywg',
+    },
   },
 }
 
