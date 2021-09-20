@@ -11,7 +11,7 @@
     "test": "jest --run-in-band",
     "build": "npx tsc -d",
     "watch": "npx tsc -d -w",
-    "docs": "npx typedoc",
+    "docs": "npx typedoc --out docs/ src/",
     "lint": "npx eslint . --ext .ts --fix",
     "prepublishOnly": "npm run build"
   },
@@ -36,6 +36,7 @@
     "prettier": "^2.4.0",
     "ts-jest": "^26.5.6",
     "ts-node": "^9.1.1",
+    "typedoc": "^0.22.4",
     "typescript": "^4.4.3"
   },
   "dependencies": {
