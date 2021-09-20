@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [ master, ryan/v1.14.0 ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
