@@ -22,11 +22,11 @@ export type ContractGroup = {
       POOL: DeployedContractAddressOrNull
       FA1_2_FACTORY: DeployedContractAddressOrNull
       FA2_FACTORY: DeployedContractAddressOrNull
-    },
+    }
     PLENTY: {
-      POOL: DeployedContractAddressOrNull,
-      PLENTY_QUIPUSWAP_POOL: DeployedContractAddressOrNull,
-      PLENTY_TOKEN: DeployedContractAddressOrNull,
+      POOL: DeployedContractAddressOrNull
+      PLENTY_QUIPUSWAP_POOL: DeployedContractAddressOrNull
+      PLENTY_TOKEN: DeployedContractAddressOrNull
     }
   }
 
@@ -59,10 +59,29 @@ export type ContractGroup = {
       reserve: DeployedContractAddressOrNull
     }
   }
+
+  VESTING_CONTRACTS: { [key: string]: DeployedContractAddressOrNull }
+
+  BREAK_GLASS_CONTRACTS: {
+    MINTER: DeployedContractAddressOrNull
+    OVEN_PROXY: DeployedContractAddressOrNull
+    OVEN_FACTORY: DeployedContractAddressOrNull
+    TOKEN: DeployedContractAddressOrNull
+    OVEN_REGISTRY: DeployedContractAddressOrNull
+    DEVELOPER_FUND: DeployedContractAddressOrNull
+    STABILITY_FUND: DeployedContractAddressOrNull
+    ORACLE: DeployedContractAddressOrNull
+    LIQUIDITY_POOL: DeployedContractAddressOrNull
+    DAO_COMMUNITY_FUND: DeployedContractAddressOrNull
+    VESTING_VAULTS: {
+      [key: string]: DeployedContractAddressOrNull
+    }
+  }
 }
 
 export type Contracts = {
   ZERO: ContractGroup
   TEST: ContractGroup
   MAIN: ContractGroup
+  SANDBOX: ContractGroup
 }

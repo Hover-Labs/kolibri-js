@@ -20,15 +20,9 @@ const ConversionUtils = {
    * @param shard The input shard
    * @param precision The number of digits to return
    */
-  shardToHumanReadablePercentage: (
-    shard: Shard,
-    precision?: number,
-  ): string => {
+  shardToHumanReadablePercentage: (shard: Shard, precision?: number): string => {
     const percentageShard = shard.times(100)
-    const humanReadable = ConversionUtils.shardToHumanReadableNumber(
-      percentageShard,
-      precision,
-    )
+    const humanReadable = ConversionUtils.shardToHumanReadableNumber(percentageShard, precision)
     return `${humanReadable}%`
   },
 

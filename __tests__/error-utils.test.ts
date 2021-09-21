@@ -44,19 +44,15 @@ const MALFORMED_DATA = {
 }
 
 test('contractErrorFromTaquitoException - valid error', function () {
-  expect(
-    ErrorUtils.contractErrorFromTaquitoException(TEST_DATA_WITH_ERROR),
-  ).toEqual(ContractErrors.OvenUnderCollateralized)
+  expect(ErrorUtils.contractErrorFromTaquitoException(TEST_DATA_WITH_ERROR)).toEqual(
+    ContractErrors.OvenUnderCollateralized,
+  )
 })
 
 test('contractErrorFromTaquitoException - missing error', function () {
-  expect(
-    ErrorUtils.contractErrorFromTaquitoException(TEST_DATA_WITHOUT_ERROR),
-  ).toEqual(ContractErrors.Unknown)
+  expect(ErrorUtils.contractErrorFromTaquitoException(TEST_DATA_WITHOUT_ERROR)).toEqual(ContractErrors.Unknown)
 })
 
 test('contractErrorFromTaquitoException - malformed exception', function () {
-  expect(ErrorUtils.contractErrorFromTaquitoException(MALFORMED_DATA)).toEqual(
-    ContractErrors.Unknown,
-  )
+  expect(ErrorUtils.contractErrorFromTaquitoException(MALFORMED_DATA)).toEqual(ContractErrors.Unknown)
 })

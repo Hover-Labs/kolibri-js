@@ -66,18 +66,14 @@ export default class OvenClient {
     const priceShard = price.multipliedBy(MUTEZ_TO_SHARD)
     const currentBalance = await this.getBalance()
     // Get value of collateral as a shard.
-    const collateralValue = currentBalance
-      .multipliedBy(MUTEZ_TO_SHARD)
-      .multipliedBy(priceShard)
+    const collateralValue = currentBalance.multipliedBy(MUTEZ_TO_SHARD).multipliedBy(priceShard)
     const collateralValueInkUSD = collateralValue.multipliedBy(SHARD_PRECISION)
 
     // Get borrowed collateral as a shard.
     const totalBorrowedTokens = await this.getTotalOutstandingTokens()
 
     // TODO(keefertaylor): Refactor this to utils for re-use.
-    return collateralValueInkUSD
-      .dividedBy(totalBorrowedTokens)
-      .multipliedBy(new BigNumber(100))
+    return collateralValueInkUSD.dividedBy(totalBorrowedTokens).multipliedBy(new BigNumber(100))
   }
 
   /**
@@ -108,9 +104,7 @@ export default class OvenClient {
    * @param baker The baker for the oven.
    * @returns The operation hash
    */
-  public async setBaker(
-    baker: Address | null,
-  ): Promise<TransactionOperation | TransactionWalletOperation> {
+  public async setBaker(baker: Address | null): Promise<TransactionOperation | TransactionWalletOperation> {
     return this.invokeOvenMethod('setDelegate', baker)
   }
 
@@ -148,9 +142,7 @@ export default class OvenClient {
    * @param time The time to calculate the values at. Defaults to the current time.
    * @returns The amount of tokens owed in stability fees.
    */
-  public async getTotalOutstandingTokens(
-    time: Date = new Date(),
-  ): Promise<Shard> {
+  public async getTotalOutstandingTokens(time: Date = new Date()): Promise<Shard> {
     const stabilityFees = await this.getStabilityFees(time)
     const borrowedTokens = await this.getBorrowedTokens()
     return stabilityFees.plus(borrowedTokens)
@@ -172,15 +164,9 @@ export default class OvenClient {
     const borrowedTokens = await this.getBorrowedTokens()
     const minterInterestIndex: BigNumber = interestData.globalInterestIndex
 
-    const ratio = minterInterestIndex
-      .times(SHARD_PRECISION)
-      .div(ovenInterestIndex)
-      .integerValue()
+    const ratio = minterInterestIndex.times(SHARD_PRECISION).div(ovenInterestIndex).integerValue()
     const totalPrinciple = borrowedTokens.plus(stabilityFeeTokens)
-    const newTotalTokens = ratio
-      .times(totalPrinciple)
-      .div(SHARD_PRECISION)
-      .integerValue()
+    const newTotalTokens = ratio.times(totalPrinciple).div(SHARD_PRECISION).integerValue()
     return newTotalTokens.minus(borrowedTokens)
   }
 
@@ -209,9 +195,7 @@ export default class OvenClient {
    *
    * @returns The operation hash.
    */
-  public async liquidate(): Promise<
-    TransactionOperation | TransactionWalletOperation
-  > {
+  public async liquidate(): Promise<TransactionOperation | TransactionWalletOperation> {
     return this.invokeOvenMethod('liquidate', [['unit']])
   }
 
@@ -221,9 +205,7 @@ export default class OvenClient {
    * @param tokens The number of tokens to borrow.
    * @returns The operation hash.
    */
-  public async borrow(
-    tokens: Shard,
-  ): Promise<TransactionOperation | TransactionWalletOperation> {
+  public async borrow(tokens: Shard): Promise<TransactionOperation | TransactionWalletOperation> {
     return this.invokeOvenMethod('borrow', tokens)
   }
 
@@ -233,9 +215,7 @@ export default class OvenClient {
    * @param mutez The amount of XTZ to deposit, specified in mutez.
    * @returns The operation hash.
    */
-  public async deposit(
-    mutez: Mutez,
-  ): Promise<TransactionOperation | TransactionWalletOperation> {
+  public async deposit(mutez: Mutez): Promise<TransactionOperation | TransactionWalletOperation> {
     return this.invokeOvenMethod('default', [['unit']], Number(mutez))
   }
 
@@ -245,9 +225,7 @@ export default class OvenClient {
    * @param mutez The amount of XTZ to withdraw, specified in mutez.
    * @returns The operation hash.
    */
-  public async withdraw(
-    mutez: Mutez,
-  ): Promise<TransactionOperation | TransactionWalletOperation> {
+  public async withdraw(mutez: Mutez): Promise<TransactionOperation | TransactionWalletOperation> {
     return this.invokeOvenMethod('withdraw', mutez)
   }
 
@@ -257,9 +235,7 @@ export default class OvenClient {
    * @param tokensToRepay The number of tokens to repay.
    * @returns The operation hash.
    */
-  public async repay(
-    tokensToRepay: Shard,
-  ): Promise<TransactionOperation | TransactionWalletOperation> {
+  public async repay(tokensToRepay: Shard): Promise<TransactionOperation | TransactionWalletOperation> {
     return this.invokeOvenMethod('repay', tokensToRepay)
   }
 

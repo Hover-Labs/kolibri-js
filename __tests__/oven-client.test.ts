@@ -22,16 +22,15 @@ const NODE_URL = 'https://rpctest.tzbeta.net'
 const OVEN_ADDRESS = 'KT1SXhvMjA4RVEjWuLyrsYgt1TU3xfeLUDEb'
 
 // Secret for a test account.
-const TEST_ACCOUNT_SECRET =
-  'edsk3aeocSRnxdWVFm3ShaALUeCTy4PgL6JdeGvzbLjX5jn8D9ZXw5'
+const TEST_ACCOUNT_SECRET = 'edsk3aeocSRnxdWVFm3ShaALUeCTy4PgL6JdeGvzbLjX5jn8D9ZXw5'
 
 // A StableCoinClient
 const stableCoinClient = new StableCoinClient(
   NODE_URL,
   Network.Delphi,
-  CONTRACTS.TEST.OVEN_REGISTRY,
-  CONTRACTS.TEST.MINTER,
-  CONTRACTS.TEST.OVEN_FACTORY,
+  CONTRACTS.TEST.OVEN_REGISTRY!,
+  CONTRACTS.TEST.MINTER!,
+  CONTRACTS.TEST.OVEN_FACTORY!,
 )
 
 // Time to sleep to let operations settle.
@@ -41,10 +40,7 @@ const SLEEP_TIME = 120
 jest.retryTimes(10)
 
 // Harbinger Client
-const harbingerClient = new HarbingerClient(
-  NODE_URL,
-  CONTRACTS.TEST.HARBINGER_NORMALIZER,
-)
+const harbingerClient = new HarbingerClient(NODE_URL, CONTRACTS.TEST.HARBINGER_NORMALIZER!)
 
 test('oven client - can borrow', async function () {
   // Let any pending transactions settle
@@ -52,18 +48,10 @@ test('oven client - can borrow', async function () {
 
   // GIVEN an OvenClient
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN borrow is called
-  const operationHash = await ovenClient.borrow(
-    new BigNumber(100 * Math.pow(10, 18)),
-  )
+  const operationHash = await ovenClient.borrow(new BigNumber(100 * Math.pow(10, 18)))
 
   // THEN the hash exists
   expect(operationHash).toBeDefined()
@@ -74,13 +62,7 @@ test('oven client - gets collateralization ratio', async function () {
   // TODO(keefertaylor): Refactor this to be in one place.
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
 
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN the collateralization ratio is retrieved
   const collateralizationRatio = await ovenClient.getCollateralizationRatio()
@@ -96,13 +78,7 @@ test('oven client - gets and sets baker', async function () {
   // GIVEN an OvenClient
   // TODO(keefertaylor): Refactor this to be in one place.
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN a baker is set to none
   const clearBakerHash = await ovenClient.setBaker(null)
@@ -136,13 +112,7 @@ test('oven client - getOwner', async function () {
   // GIVEN an OvenClient
   // TODO(keefertaylor): Refactor this to be in one place.
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN the owner is retrieved
   const owner = await ovenClient.getOwner()
@@ -155,13 +125,7 @@ test('oven client - isLiquidated', async function () {
   // GIVEN an OvenClient
   // TODO(keefertaylor): Refactor this to be in one place.
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN liquidation is tested for.
   const isLiquidated = await ovenClient.isLiquidated()
@@ -174,13 +138,7 @@ test('oven client - retrieves borrowed tokens', async function () {
   // GIVEN an OvenClient
   // TODO(keefertaylor): Refactor this to be in one place.
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN the amount of borrowed tokens is retrieved.
   const borrowedTokens = await ovenClient.getBorrowedTokens()
@@ -193,13 +151,7 @@ test('oven client - retrieves stability fees', async function () {
   // GIVEN an OvenClient
   // TODO(keefertaylor): Refactor this to be in one place.
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN stability fees are retrieved.
   const stabilityFees = await ovenClient.getStabilityFees()
@@ -212,13 +164,7 @@ test('oven client - retrieves total outstanding tokens', async function () {
   // GIVEN an OvenClient
   // TODO(keefertaylor): Refactor this to be in one place.
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN the total outstanding tokens are retrieved.
   const totalOutstandingTokens = await ovenClient.getTotalOutstandingTokens()
@@ -234,13 +180,7 @@ test('oven client - retrieves oven balance', async function () {
   // GIVEN an OvenClient
   // TODO(keefertaylor): Refactor this to be in one place.
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN the balance is retrieved.
   const balance = await ovenClient.getBalance()
@@ -256,13 +196,7 @@ test('oven client - can deposit', async function () {
   // GIVEN an OvenClient
   // TODO(keefertaylor): Refactor this to be in one place.
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN a deposit is processed
   const operationHash = await ovenClient.deposit(new BigNumber(1_000_000))
@@ -277,13 +211,7 @@ test('oven client - can withdraw', async function () {
 
   // GIVEN an OvenClient
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN withdraw is called
   const operationHash = await ovenClient.withdraw(new BigNumber('900000'))
@@ -298,18 +226,10 @@ test('oven client - can repay', async function () {
 
   // GIVEN an OvenClient
   const signer = await InMemorySigner.fromSecretKey(TEST_ACCOUNT_SECRET)
-  const ovenClient = new OvenClient(
-    NODE_URL,
-    signer,
-    OVEN_ADDRESS,
-    stableCoinClient,
-    harbingerClient,
-  )
+  const ovenClient = new OvenClient(NODE_URL, signer, OVEN_ADDRESS, stableCoinClient, harbingerClient)
 
   // WHEN borrows is called
-  const operationHash = await ovenClient.repay(
-    new BigNumber(10 * Math.pow(10, 18)),
-  )
+  const operationHash = await ovenClient.repay(new BigNumber(10 * Math.pow(10, 18)))
 
   // THEN the hash exists
   expect(operationHash).toBeDefined()
