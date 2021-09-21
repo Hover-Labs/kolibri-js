@@ -30,6 +30,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           scope: '@hover-labs'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Retrieve the cached "node_modules" directory (if present)
         uses: actions/cache@v2
