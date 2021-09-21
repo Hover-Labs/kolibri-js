@@ -18,7 +18,7 @@ jobs:
         uses: Ilshidur/action-discord@master
         with:
           args: >
-            <:js:889588003851358208> [[{{ SHORT_SHA }}](https://github.com/{{ GITHUB_REPOSITORY }}/commit/{{ SHORT_SHA }})] [Starting Kolibri JS build...](https://github.com/{{ GITHUB_REPOSITORY }}/actions/runs/{{ GITHUB_RUN_ID }}?check_suite_focus=true)
+            <:js:889588003851358208> [[{{ SHORT_SHA }}](<https://github.com/{{ GITHUB_REPOSITORY }}/commit/{{ SHORT_SHA }}>)] [Starting Kolibri JS build...](<https://github.com/{{ GITHUB_REPOSITORY }}/actions/runs/{{ GITHUB_RUN_ID }}?check_suite_focus=true>)
             ```${{ github.event.head_commit.message }}```
 
   build_and_deploy_docs:
@@ -65,6 +65,6 @@ jobs:
         uses: Ilshidur/action-discord@master
         with:
           args: >
-            <:js:889588003851358208> [[{{ SHORT_SHA }}](https://github.com/{{ GITHUB_REPOSITORY }}/commit/{{ SHORT_SHA }})] [Kolibri JS built successfully!](https://github.com/{{ GITHUB_REPOSITORY }}/actions/runs/{{ GITHUB_RUN_ID }}?check_suite_focus=true)
+            <:js:889588003851358208> [[{{ SHORT_SHA }}](<https://github.com/{{ GITHUB_REPOSITORY }}/commit/{{ SHORT_SHA }}>)] [Kolibri JS built successfully!](<https://github.com/{{ GITHUB_REPOSITORY }}/actions/runs/{{ GITHUB_RUN_ID }}?check_suite_focus=true>)
             ```${{ github.event.head_commit.message }}```
 
