@@ -1,6 +1,6 @@
 {
   "name": "@hover-labs/kolibri-js",
-  "version": "1.14.2",
+  "version": "1.14.3",
   "description": "SDK Code to Interact with Kolbri, a stablecoin built on Tezos",
   "main": "build/src/index.js",
   "files": [
