@@ -20,7 +20,7 @@ jobs:
             <:js:889588003851358208> [[{{ SHORT_SHA }}](https://github.com/{{ GITHUB_REPOSITORY }}/commit/{{ SHORT_SHA }})] [Starting Kolibri JS release publish...](https://github.com/{{ GITHUB_REPOSITORY }}/actions/runs/{{ GITHUB_RUN_ID }}?check_suite_focus=true)
             ```${{ github.event.head_commit.message }}```
 
-  build-and-publish:
+  build_and_publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - notify_init
-      - build_and_deploy_docs
+      - build_and_publish
     steps:
       - name: Add SHORT_SHA env property with commit short sha
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-7`" >> $GITHUB_ENV
