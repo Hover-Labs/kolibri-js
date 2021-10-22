@@ -53,16 +53,13 @@ const contracts: ContractGroup = {
   },
 
   VESTING_CONTRACTS: {
-    tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V:
-      'KT1JyC6ShDjT9DtdjZAjWFsvuQuev2f49UXn',
-    tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV:
-      'KT1A4N9amP26gjPknxAsVZNP5xgLGu4yqKka',
-    tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB:
-      'KT1TDgMJA7daH2Dg271dXV3SAMLfhd4kiJGb',
+    tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V: 'KT1JyC6ShDjT9DtdjZAjWFsvuQuev2f49UXn',
+    tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV: 'KT1A4N9amP26gjPknxAsVZNP5xgLGu4yqKka',
+    tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB: 'KT1TDgMJA7daH2Dg271dXV3SAMLfhd4kiJGb',
   },
 
   BREAK_GLASS_CONTRACTS: {
-    MINTER: 'KT1TjPCyBU271zX6AG6qqAw1xf3QmXoSDrCP',
+    MINTER: 'KT1TrqGSqnnkbaRUjTNFfd2BWnpAk6MocnwX',
     OVEN_PROXY: 'KT1FTT7CYwEqJErbGkk6ZrWonLtYa8SpTEbH',
     OVEN_FACTORY: 'KT1WaraYWQajJtTW3hrotyRvyFUJ5WowXhD5',
     TOKEN: 'KT1DEEcqJkjWPeTho3RSRfeEkz7aCSgnJXrM',
@@ -73,12 +70,9 @@ const contracts: ContractGroup = {
     LIQUIDITY_POOL: 'KT1FC288PPN87gtmTKRuHVUhoJ1Z8T4KBUAD',
     DAO_COMMUNITY_FUND: 'KT1LdS5mBkTzrjacqgJ1FMZNmaSoUazZXSuR',
     VESTING_VAULTS: {
-      tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V:
-        'KT1M7YNrcUawwFStCoi9SvMm45siDFS5CnU7',
-      tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV:
-        'KT1DURQAFr1D7Szc9SHyZ4R3ZFL4tpqegzTW',
-      tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB:
-        'KT1B9RF7Ym5ovLtH3tbpVKKeUcnYKa9dZ4zi',
+      tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V: 'KT1M7YNrcUawwFStCoi9SvMm45siDFS5CnU7',
+      tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV: 'KT1DURQAFr1D7Szc9SHyZ4R3ZFL4tpqegzTW',
+      tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB: 'KT1B9RF7Ym5ovLtH3tbpVKKeUcnYKa9dZ4zi',
     },
   },
 }
