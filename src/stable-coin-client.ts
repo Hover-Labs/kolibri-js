@@ -1,10 +1,9 @@
 import Network from './network'
 import Address from './types/address'
 import OperationHash from './types/operation-hash'
-import { ThanosWallet } from '@thanos-wallet/dapp'
+import { TempleWallet } from "@temple-wallet/dapp";
 import { InMemorySigner } from '@taquito/signer'
 import Shard from './types/shard'
-import Mutez from './types/mutez'
 import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
 import BigNumber from 'bignumber.js'
@@ -93,7 +92,7 @@ export default class StableCoinClient {
    * @returns The result of deploying a new Oven.
    */
   public async deployOven(
-    wallet: InMemorySigner | ThanosWallet,
+    wallet: InMemorySigner | TempleWallet,
   ): Promise<TransactionWalletOperation | TransactionOperation> {
     if (wallet instanceof InMemorySigner) {
       // Wallet is InMemorySigner
@@ -143,19 +142,6 @@ export default class StableCoinClient {
     const minterContract = await this.tezos.contract.at(this.minterAddress)
     const minterStorage: any = await minterContract.storage()
     return await minterStorage.stabilityFee
-  }
-
-  /**
-   * Retrieve the maximum value for an oven.
-   *
-   * This method returns a Mutez amount if limits are active, otherwise it returns `null`.
-   *
-   * @returns A number representing the maximum mutez an oven can contain, or `null`.
-   */
-  public async getMaximumOvenValue(): Promise<Mutez | null> {
-    const minterContract = await this.tezos.contract.at(this.minterAddress)
-    const minterStorage: any = await minterContract.storage()
-    return await minterStorage.ovenMax
   }
 
   /**

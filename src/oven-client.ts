@@ -1,6 +1,6 @@
 import Address from './types/address'
 import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
-import { ThanosWallet } from '@thanos-wallet/dapp'
+import { TempleWallet } from "@temple-wallet/dapp";
 import { InMemorySigner } from '@taquito/signer'
 import HarbingerClient from './harbinger-client'
 import Mutez from './types/mutez'
@@ -36,7 +36,7 @@ export default class OvenClient {
    */
   public constructor(
     nodeUrl: string,
-    wallet: InMemorySigner | ThanosWallet,
+    wallet: InMemorySigner | TempleWallet,
     public readonly ovenAddress: Address,
     public readonly stableCoinClient: StableCoinClient,
     public readonly harbingerClient: HarbingerClient,
