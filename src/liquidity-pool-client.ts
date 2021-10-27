@@ -1,6 +1,6 @@
 import Address from './types/address'
 import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
-import { ThanosWallet } from '@thanos-wallet/dapp'
+import { TempleWallet } from "@temple-wallet/dapp";
 import { InMemorySigner } from '@taquito/signer'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
 
@@ -20,7 +20,7 @@ export default class LiquidityPoolClient {
    */
   public constructor(
     nodeUrl: string,
-    wallet: InMemorySigner | ThanosWallet,
+    wallet: InMemorySigner | TempleWallet,
     public readonly liquidityPoolAddress: Address,
   ) {
     const tezos = new TezosToolkit(nodeUrl)
