@@ -12,6 +12,7 @@ const contracts: ContractGroup = {
   HARBINGER_NORMALIZER: 'KT1SUP27JhX24Kvr11oUdWswk7FnCW78ZyUn',
 
   LIQUIDITY_POOL: 'KT19RUbUUizsy7arXiziEi9d2nfJNMG74KxS',
+  SAVINGS_POOL: null,
 
   DEXES: {
     QUIPUSWAP: {
