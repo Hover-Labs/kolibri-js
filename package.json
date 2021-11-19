@@ -1,6 +1,6 @@
 {
   "name": "@hover-labs/kolibri-js",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "SDK Code to Interact with Kolbri, a stablecoin built on Tezos",
   "main": "build/src/index.js",
   "files": [
@@ -23,6 +23,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^26.0.24",
+    "@types/lodash": "^4.14.177",
     "@types/node": "^14.17.15",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
@@ -46,6 +47,7 @@
     "axios": "^0.21.0",
     "bignumber.js": "^9.0.1",
     "blakejs": "^1.1.1",
-    "bs58check": "^2.1.2"
+    "bs58check": "^2.1.2",
+    "lodash": "^4.17.21"
   }
 }
