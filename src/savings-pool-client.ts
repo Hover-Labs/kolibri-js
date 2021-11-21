@@ -1,4 +1,4 @@
-import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
+import { ContractAbstraction, TezosToolkit, TransactionWalletOperation, Wallet } from '@taquito/taquito'
 import { InMemorySigner } from '@taquito/signer'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
 import BigNumber from 'bignumber.js'
@@ -45,10 +45,13 @@ export default class SavingsPoolClient {
    * @param kUSDAmount The amount of kUSD to deposit.
    * @returns The operation hash
    */
-  public async deposit(kUSDAmount: BigNumber): Promise<TransactionOperation | TransactionWalletOperation> {
-    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
+  public async deposit(
+    kUSDAmount: BigNumber,
+    savingsPoolContract: ContractAbstraction<Wallet> | undefined = undefined
+  ): Promise<TransactionOperation | TransactionWalletOperation> {
+    const resolvedSavingsPoolContract = savingsPoolContract ?? await this.tezos.wallet.at(this.savingsPoolAddress)
     const sendArgs = { amount: 0, mutez: true }
-    return await savingsPoolContract.methods['deposit'](kUSDAmount).send(sendArgs)
+    return await resolvedSavingsPoolContract.methods['deposit'](kUSDAmount).send(sendArgs)
   }
 
   /**
@@ -57,34 +60,39 @@ export default class SavingsPoolClient {
    * @param lpTokenAmount The amount of LP tokens to redeem.
    * @returns The operation hash
    */
-  public async redeem(lpTokenAmount: BigNumber): Promise<TransactionOperation | TransactionWalletOperation> {
-    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
+  public async redeem(
+    lpTokenAmount: BigNumber,
+    savingsPoolContract: ContractAbstraction<Wallet> | undefined = undefined
+  ): Promise<TransactionOperation | TransactionWalletOperation> {
+    const resolvedSavingsPoolContract = savingsPoolContract ?? await this.tezos.wallet.at(this.savingsPoolAddress)
     const sendArgs = { amount: 0, mutez: true }
-    return await savingsPoolContract.methods['redeem'](lpTokenAmount).send(sendArgs)
+    return await resolvedSavingsPoolContract.methods['redeem'](lpTokenAmount).send(sendArgs)
   }
 
   /**
    * Get the interest rate of the pool.
    */
-  public async getInterestRateAPY(): Promise<BigNumber> {
-    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
-    const savingsPoolStorage: any = await savingsPoolContract.storage()
-    const interestRate = savingsPoolStorage.interestRate
+  public async getInterestRateAPY(savingsPoolStorage: any | undefined = undefined): Promise<BigNumber> {
+    const resolvedSavingsPoolStorage = savingsPoolStorage ?? (await (await this.tezos.wallet.at(this.savingsPoolAddress)).storage() as any)
+
+    const interestRate = resolvedSavingsPoolStorage.interestRate
     return interestRateToApy(interestRate)
   }
 
   /** 
    * Get the size of the pool in kUSD, accounting for the current time.
    */
-  public async getPoolSize(): Promise<BigNumber> {
-    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
-    const savingsPoolStorage: any = await savingsPoolContract.storage()
-    const poolSize = savingsPoolStorage.underlyingBalance
-    const lastInterestUpdateTime = savingsPoolStorage.lastInterestCompoundTime
-    const interestRate = savingsPoolStorage.interestRate
+  public async getPoolSize(
+    savingsPoolStorage: any | undefined = undefined,
+    time = new Date(),
+  ): Promise<BigNumber> {
+    const resolvedSavingsPoolStorage = savingsPoolStorage ?? (await (await this.tezos.wallet.at(this.savingsPoolAddress)).storage() as any)
+
+    const poolSize = resolvedSavingsPoolStorage.underlyingBalance
+    const lastInterestUpdateTime = resolvedSavingsPoolStorage.lastInterestCompoundTime
+    const interestRate = resolvedSavingsPoolStorage.interestRate
 
     // TODO(keefertaylor): Similiar to the API in StableCoin client. Consider deduping / refactoring.
-    const time = new Date()
     const lastUpdate = new Date(`${lastInterestUpdateTime}`)
     const deltaMs = time.getTime() - lastUpdate.getTime()
     const deltaSecs = Math.floor(deltaMs / 1000)
@@ -96,18 +104,17 @@ export default class SavingsPoolClient {
   /**
    * Get the number of LP tokens in existence.
    */
-  public async getLPTokenTotal(): Promise<BigNumber> {
-    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
-    const savingsPoolStorage: any = await savingsPoolContract.storage()
-    return savingsPoolStorage.totalSupply
+  public async getLPTokenTotal(savingsPoolStorage: any | undefined = undefined): Promise<BigNumber> {
+    const resolvedSavingsPoolStorage = savingsPoolStorage ?? (await (await this.tezos.wallet.at(this.savingsPoolAddress)).storage() as any)
+    return resolvedSavingsPoolStorage.totalSupply
   }
 
   /**
    * Get the conversion rate of 1 LP token to kUSD, denominated in kUSD.
    */
-  public async getLPTokenConversionRate(): Promise<BigNumber> {
-    const poolSize = await this.getPoolSize()
-    const totalLPTokens = await this.getLPTokenTotal()
+  public async getLPTokenConversionRate(savingsPoolStorage: any | undefined = undefined, time = new Date()): Promise<BigNumber> {
+    const poolSize = await this.getPoolSize(savingsPoolStorage, time)
+    const totalLPTokens = await this.getLPTokenTotal(savingsPoolStorage)
 
     // NOTE: KSR LP tokens are denominated in 36 digits, and kUSD uses 18 so we upscale the kUSD size to be 
     //       the same precision.
@@ -117,16 +124,20 @@ export default class SavingsPoolClient {
   /** 
    * Get the LP token balance for the given account.
    */
-  public async getLPTokenBalance(address: Address): Promise<BigNumber> {
-    return getTokenBalance(address, this.savingsPoolAddress, this.tezos)
+  public async getLPTokenBalance(address: Address, tokenContractStorage: any | undefined = undefined): Promise<BigNumber> {
+    return getTokenBalance(address, this.savingsPoolAddress, this.tezos, tokenContractStorage)
   }
 
   /**
    * Get the kUSD balance for a given account, if they turned in all of their LP tokens.
    */
-  public async getkUSDTokenBalance(address: Address): Promise<BigNumber> {
-    const conversionRate = await this.getLPTokenConversionRate()
-    const lpTokenBalance = await this.getLPTokenBalance(address)
+  public async getkUSDTokenBalance(
+    address: Address,
+    savingsPoolStorage: any | undefined = undefined,
+    tokenContractStorage: any | undefined = undefined
+  ): Promise<BigNumber> {
+    const conversionRate = await this.getLPTokenConversionRate(savingsPoolStorage)
+    const lpTokenBalance = await this.getLPTokenBalance(address, tokenContractStorage)
 
     // NOTE: KSR LP tokens are denominated in 36 digits, and kUSD uses 18 so we upscale the kUSD size to be 
     //       the same precision.

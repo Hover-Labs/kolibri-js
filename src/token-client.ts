@@ -51,7 +51,7 @@ export default class TokenClient {
    *
    * @returns The token balance.
    */
-  public async getBalance(address: Address): Promise<Shard> {
-    return getTokenBalance(address, this.tokenAddress, this.tezos)
+  public async getBalance(address: Address, tokenContractStorage: any | undefined = undefined): Promise<Shard> {
+    return getTokenBalance(address, this.tokenAddress, this.tezos, tokenContractStorage)
   }
 }
