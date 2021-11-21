@@ -98,4 +98,13 @@ export default class SavingsPoolClient {
     return compoundingLinearApproximation(poolSize, interestRate, numPeriods)
   }
 
+  /**
+   * Get the number of LP tokens in existence.
+   */
+  public async getLPTokenTotal(): Promise<BigNumber> {
+    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
+    const savingsPoolStorage: any = await savingsPoolContract.storage()
+    return savingsPoolStorage.totalSupply
+  }
+
 }
