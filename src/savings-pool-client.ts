@@ -40,13 +40,6 @@ export default class SavingsPoolClient {
   }
 
   /**
-   * Wishlist of features:
-   * - Get addresses's balance of kUSD in the pool
-   * - Get pool interest rate
-   * - Get conversion rate of LP Token to kUSD
-   */
-
-  /**
    * Deposit kUSD into the liquidity pool and receive LP tokens.
    * 
    * @param kUSDAmount The amount of kUSD to deposit.
@@ -125,5 +118,17 @@ export default class SavingsPoolClient {
    */
   public async getLPTokenBalance(address: Address): Promise<BigNumber> {
     return getTokenBalance(address, this.savingsPoolAddress, this.tezos)
+  }
+
+  /**
+   * Get the kUSD balance for a given account, if they turned in all of their LP tokens.
+   */
+  public async getkUSDTokenBalance(address: Address): Promise<BigNumber> {
+    const conversionRate = await this.getLPTokenConversionRate()
+    const lpTokenBalance = await this.getLPTokenBalance(address)
+
+    // NOTE: KSR LP tokens are denominated in 36 digits, and kUSD uses 18 so we upscale the kUSD size to be 
+    //       the same precision.
+    return conversionRate.times(lpTokenBalance).dividedBy(CONSTANTS.PRECISION)
   }
 }
