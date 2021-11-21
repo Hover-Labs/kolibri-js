@@ -107,4 +107,16 @@ export default class SavingsPoolClient {
     return savingsPoolStorage.totalSupply
   }
 
+  /**
+   * Get the conversion rate of 1 LP token to kUSD, denominated in kUSD.
+   */
+  public async getLPTokenConversionRate(): Promise<BigNumber> {
+    const poolSize = await this.getPoolSize()
+    const totalLPTokens = await this.getLPTokenTotal()
+
+    // NOTE: KSR LP tokens are denominated in 36 digits, and kUSD uses 18 so we upscale the kUSD size to be 
+    //       the same precision.
+    return poolSize.times(CONSTANTS.PRECISION).times(CONSTANTS.PRECISION).dividedBy(totalLPTokens)
+  }
+
 }
