@@ -2,7 +2,8 @@ import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import { InMemorySigner } from '@taquito/signer'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
 import BigNumber from 'bignumber.js'
-import { interestRateToApy } from './utils'
+import { compoundingLinearApproximation, interestRateToApy } from './utils'
+import CONSTANTS from './constants'
 
 /**
  * Controls interaction with the Kolibri Savings Pool.
@@ -71,11 +72,30 @@ export default class SavingsPoolClient {
   /**
    * Get the interest rate of the pool.
    */
-  public async getInterestRate(): Promise<BigNumber> {
+  public async getInterestRateAPY(): Promise<BigNumber> {
     const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
     const savingsPoolStorage: any = await savingsPoolContract.storage()
     const interestRate = savingsPoolStorage.interestRate
     return interestRateToApy(interestRate)
+  }
+
+  /** 
+   * Get the size of the pool in kUSD, accounting for the current time.
+   */
+  public async getPoolSize(): Promise<BigNumber> {
+    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
+    const savingsPoolStorage: any = await savingsPoolContract.storage()
+    const poolSize = savingsPoolStorage.underlyingBalance
+    const lastInterestUpdate = savingsPoolStorage.lastInterestCompoundTime
+    const interestRate = savingsPoolStorage.interestRate
+
+    // TODO(keefertaylor): Similiar to the API in StableCoin client. Consider deduping / refactoring.
+    const time = new Date()
+    const deltaMs = time.getTime() - lastInterestUpdate.getTime()
+    const deltaSecs = Math.floor(deltaMs / 1000)
+    const numPeriods = Math.floor(deltaSecs / CONSTANTS.COMPOUND_PERIOD_SECONDS)
+
+    return compoundingLinearApproximation(poolSize, interestRate, numPeriods)
   }
 
 }

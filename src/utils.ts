@@ -42,3 +42,10 @@ export const interestRateToApy = async (interstRatePerPeriod: BigNumber): Promis
   }
   return apy.minus(one)
 }
+
+/**
+ * Linearly approximate a compounding 
+ */
+export const compoundingLinearApproximation = (initial: BigNumber, interestRatePerPeriod: BigNumber, numPeriods: number) => {
+  return initial.times(CONSTANTS.PRECISION.plus(interestRatePerPeriod.times(numPeriods))).div(CONSTANTS.PRECISION)
+}

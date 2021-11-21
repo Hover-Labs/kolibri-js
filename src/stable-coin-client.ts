@@ -9,7 +9,7 @@ import { TransactionOperation } from '@taquito/taquito/dist/types/operations/tra
 import BigNumber from 'bignumber.js'
 import axios, { AxiosResponse } from 'axios'
 import CONSTANTS from './constants'
-import { interestRateToApy } from './utils'
+import { compoundingLinearApproximation, interestRateToApy } from './utils'
 
 /** The result of deploying an Oven. */
 export type OvenDeployResult = {
@@ -161,9 +161,11 @@ export default class StableCoinClient {
 
     const simpleStabilityFee = await this.getSimpleStabilityFee()
 
-    const globalInterestIndexApproximation = globalInterestIndex
-      .times(CONSTANTS.PRECISION.plus(simpleStabilityFee.times(numPeriods)))
-      .div(CONSTANTS.PRECISION)
+    const globalInterestIndexApproximation = compoundingLinearApproximation(
+      globalInterestIndex,
+      simpleStabilityFee,
+      numPeriods
+    )
     return {
       globalInterestIndex: globalInterestIndexApproximation,
       lastUpdateTime: time,
