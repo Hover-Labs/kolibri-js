@@ -8,16 +8,8 @@ import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
 import BigNumber from 'bignumber.js'
 import axios, { AxiosResponse } from 'axios'
-
-/** The number of seconds in a compound interest period */
-const COMPOUND_PERIOD_SECONDS = 60
-
-/** The number of periods that occur per year. */
-const COMPOUNDS_PER_YEAR = (365 * 24 * 60 * 60) / COMPOUND_PERIOD_SECONDS // (Number of seconds in year) / (seconds per compound)
-
-/** The number of decimals in smart contract precision */
-// TODO(keefertaylor): Refactor to a constant.
-const PRECISION = new BigNumber(Math.pow(10, 18))
+import CONSTANTS from './constants'
+import { interestRateToApy } from './utils'
 
 /** The result of deploying an Oven. */
 export type OvenDeployResult = {
@@ -120,14 +112,7 @@ export default class StableCoinClient {
     const minterContract = await this.tezos.contract.at(this.minterAddress)
     const minterStorage: any = await minterContract.storage()
     const stabilityFee = await minterStorage.stabilityFee
-
-    const one = new BigNumber(1_000_000_000_000_000_000)
-    const initial = stabilityFee.plus(one)
-    let apy = one
-    for (let n = 0; n < COMPOUNDS_PER_YEAR; n++) {
-      apy = apy.times(initial).dividedBy(one)
-    }
-    return apy.minus(one)
+    return interestRateToApy(stabilityFee)
   }
 
   /**
@@ -172,13 +157,13 @@ export default class StableCoinClient {
 
     const deltaMs = time.getTime() - lastUpdateTime.getTime()
     const deltaSecs = Math.floor(deltaMs / 1000)
-    const numPeriods = Math.floor(deltaSecs / COMPOUND_PERIOD_SECONDS)
+    const numPeriods = Math.floor(deltaSecs / CONSTANTS.COMPOUND_PERIOD_SECONDS)
 
     const simpleStabilityFee = await this.getSimpleStabilityFee()
 
     const globalInterestIndexApproximation = globalInterestIndex
-      .times(PRECISION.plus(simpleStabilityFee.times(numPeriods)))
-      .div(PRECISION)
+      .times(CONSTANTS.PRECISION.plus(simpleStabilityFee.times(numPeriods)))
+      .div(CONSTANTS.PRECISION)
     return {
       globalInterestIndex: globalInterestIndexApproximation,
       lastUpdateTime: time,

@@ -1,7 +1,8 @@
 import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import { InMemorySigner } from '@taquito/signer'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
-import BigNumber from 'bignumber.js';
+import BigNumber from 'bignumber.js'
+import { interestRateToApy } from './utils'
 
 /**
  * Controls interaction with the Kolibri Savings Pool.
@@ -50,9 +51,9 @@ export default class SavingsPoolClient {
    * @returns The operation hash
    */
   public async deposit(kUSDAmount: BigNumber): Promise<TransactionOperation | TransactionWalletOperation> {
-    const liquidityPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
+    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
     const sendArgs = { amount: 0, mutez: true }
-    return await liquidityPoolContract.methods['deposit'](kUSDAmount).send(sendArgs)
+    return await savingsPoolContract.methods['deposit'](kUSDAmount).send(sendArgs)
   }
 
   /**
@@ -62,8 +63,19 @@ export default class SavingsPoolClient {
    * @returns The operation hash
    */
   public async redeem(lpTokenAmount: BigNumber): Promise<TransactionOperation | TransactionWalletOperation> {
-    const liquidityPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
+    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
     const sendArgs = { amount: 0, mutez: true }
-    return await liquidityPoolContract.methods['redeem'](lpTokenAmount).send(sendArgs)
+    return await savingsPoolContract.methods['redeem'](lpTokenAmount).send(sendArgs)
   }
+
+  /**
+   * Get the interest rate of the pool.
+   */
+  public async getInterestRate(): Promise<BigNumber> {
+    const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
+    const savingsPoolStorage: any = await savingsPoolContract.storage()
+    const interestRate = savingsPoolStorage.interestRate
+    return interestRateToApy(interestRate)
+  }
+
 }

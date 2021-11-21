@@ -8,6 +8,8 @@ import {
   OperationResultTransaction,
 } from '@taquito/rpc'
 import _ from "lodash";
+import BigNumber from 'bignumber.js'
+import CONSTANTS from './constants'
 
 /**
  * Derive an oven address from the given operation.
@@ -26,4 +28,17 @@ export const deriveOvenAddress = async (operation: TransactionWalletOperation): 
   const ovenAddress = (ovenResult as OperationResultTransaction).originated_contracts![0]
 
   return ovenAddress
+}
+
+/**
+ * Convert an interest rate per period into an APY.
+ */
+export const interestRateToApy = async (interstRatePerPeriod: BigNumber): Promise<BigNumber> => {
+  const one = new BigNumber(1_000_000_000_000_000_000)
+  const initial = interstRatePerPeriod.plus(one)
+  let apy = one
+  for (let n = 0; n < CONSTANTS.COMPOUNDS_PER_YEAR; n++) {
+    apy = apy.times(initial).dividedBy(one)
+  }
+  return apy.minus(one)
 }
