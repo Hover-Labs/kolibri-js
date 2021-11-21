@@ -1,5 +1,5 @@
 import Address from "./types/address"
-import { TransactionWalletOperation } from '@taquito/taquito'
+import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import {
   OperationContentsAndResult,
   OperationContentsAndResultTransaction,
@@ -8,6 +8,8 @@ import {
   OperationResultTransaction,
 } from '@taquito/rpc'
 import _ from "lodash";
+import BigNumber from 'bignumber.js'
+import CONSTANTS from './constants'
 
 /**
  * Derive an oven address from the given operation.
@@ -26,4 +28,38 @@ export const deriveOvenAddress = async (operation: TransactionWalletOperation): 
   const ovenAddress = (ovenResult as OperationResultTransaction).originated_contracts![0]
 
   return ovenAddress
+}
+
+/**
+ * Convert an interest rate per period into an APY.
+ */
+export const interestRateToApy = async (interestRatePerPeriod: BigNumber): Promise<BigNumber> => {
+  const one = new BigNumber(10).pow(18)
+  const initial = interestRatePerPeriod.plus(one)
+  let apy = one
+  for (let n = 0; n < CONSTANTS.COMPOUNDS_PER_YEAR; n++) {
+    apy = apy.times(initial).dividedBy(one)
+  }
+  return apy.minus(one)
+}
+
+/**
+ * Linearly approximate a compounding 
+ */
+export const compoundingLinearApproximation = (initial: BigNumber, interestRatePerPeriod: BigNumber, numPeriods: number) => {
+  return initial.times(CONSTANTS.PRECISION.plus(interestRatePerPeriod.times(numPeriods))).div(CONSTANTS.PRECISION)
+}
+
+/**
+ * Get a token balance from the default SmartPy implementation used by Kolibri.
+ */
+export const getTokenBalance = async (
+  holder: Address,
+  tokenContractAddress: Address,
+  tezos: TezosToolkit,
+  tokenContractStorage: any | undefined = undefined
+): Promise<BigNumber> => {
+  const resolvedTokenStorage = tokenContractStorage ?? (await (await tezos.wallet.at(tokenContractAddress)).storage() as any)
+  const balance = await resolvedTokenStorage.balances.get(holder)
+  return balance === undefined ? new BigNumber(0) : balance.balance
 }

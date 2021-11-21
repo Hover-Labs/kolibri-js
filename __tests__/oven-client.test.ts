@@ -16,21 +16,24 @@ import CONTRACTS from '../src/contracts'
 // Allow extra time for RPCs
 jest.setTimeout(60_000 * 10) // 10 minutes
 
-const NODE_URL = 'https://rpctest.tzbeta.net'
+const NODE_URL = 'https://sandbox.hover.engineering'
 
 // Adress of an oven.
-const OVEN_ADDRESS = 'KT1SXhvMjA4RVEjWuLyrsYgt1TU3xfeLUDEb'
+const OVEN_ADDRESS = 'KT1K72GzxKkYyv4czu8VqWDETBdJQeJsZEvZ'
 
 // Secret for a test account.
-const TEST_ACCOUNT_SECRET = 'edsk3aeocSRnxdWVFm3ShaALUeCTy4PgL6JdeGvzbLjX5jn8D9ZXw5'
+const TEST_ACCOUNT_SECRET = 'edsk3QoqBuvdamxouPhin7swCvkQNgq4jP5KZPbwWNnwdZpSpJiEbq'
+
+// Contracts
+const CONTRACT_GROUP = CONTRACTS.SANDBOX
 
 // A StableCoinClient
 const stableCoinClient = new StableCoinClient(
   NODE_URL,
-  Network.Delphi,
-  CONTRACTS.TEST.OVEN_REGISTRY!,
-  CONTRACTS.TEST.MINTER!,
-  CONTRACTS.TEST.OVEN_FACTORY!,
+  Network.Sandbox,
+  CONTRACT_GROUP.OVEN_REGISTRY!,
+  CONTRACT_GROUP.MINTER!,
+  CONTRACT_GROUP.OVEN_FACTORY!,
 )
 
 // Time to sleep to let operations settle.
@@ -40,7 +43,7 @@ const SLEEP_TIME = 120
 jest.retryTimes(10)
 
 // Harbinger Client
-const harbingerClient = new HarbingerClient(NODE_URL, CONTRACTS.TEST.HARBINGER_NORMALIZER!)
+const harbingerClient = new HarbingerClient(NODE_URL, CONTRACT_GROUP.HARBINGER_NORMALIZER!)
 
 test('oven client - can borrow', async function () {
   // Let any pending transactions settle
