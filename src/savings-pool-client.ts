@@ -2,8 +2,9 @@ import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import { InMemorySigner } from '@taquito/signer'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
 import BigNumber from 'bignumber.js'
-import { compoundingLinearApproximation, interestRateToApy } from './utils'
+import { compoundingLinearApproximation, getTokenBalance, interestRateToApy } from './utils'
 import CONSTANTS from './constants'
+import Address from './types/address'
 
 /**
  * Controls interaction with the Kolibri Savings Pool.
@@ -119,4 +120,10 @@ export default class SavingsPoolClient {
     return poolSize.times(CONSTANTS.PRECISION).times(CONSTANTS.PRECISION).dividedBy(totalLPTokens)
   }
 
+  /** 
+   * Get the LP token balance for the given account.
+   */
+  public async getLPTokenBalance(address: Address): Promise<BigNumber> {
+    return getTokenBalance(address, this.savingsPoolAddress, this.tezos)
+  }
 }

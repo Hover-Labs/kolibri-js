@@ -1,5 +1,5 @@
 import Address from "./types/address"
-import { TransactionWalletOperation } from '@taquito/taquito'
+import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import {
   OperationContentsAndResult,
   OperationContentsAndResultTransaction,
@@ -48,4 +48,14 @@ export const interestRateToApy = async (interstRatePerPeriod: BigNumber): Promis
  */
 export const compoundingLinearApproximation = (initial: BigNumber, interestRatePerPeriod: BigNumber, numPeriods: number) => {
   return initial.times(CONSTANTS.PRECISION.plus(interestRatePerPeriod.times(numPeriods))).div(CONSTANTS.PRECISION)
+}
+
+/**
+ * Get a token balance from the default SmartPy implementation used by Kolibri.
+ */
+export const getTokenBalance = async (holder: Address, tokenContractAddress: Address, tezos: TezosToolkit): Promise<BigNumber> => {
+  const tokenContract = await tezos.contract.at(tokenContractAddress)
+  const tokenStorage: any = await tokenContract.storage()
+  const balance = await tokenStorage.balances.get(holder)
+  return balance === undefined ? new BigNumber(0) : balance.balance
 }

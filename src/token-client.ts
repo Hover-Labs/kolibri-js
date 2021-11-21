@@ -2,6 +2,7 @@ import { TezosToolkit } from '@taquito/taquito'
 import Shard from './types/shard'
 import Address from './types/address'
 import BigNumber from 'bignumber.js'
+import { getTokenBalance } from './utils'
 
 /** Interacts with the Untitled Stable Coin project's token. */
 export default class TokenClient {
@@ -23,9 +24,6 @@ export default class TokenClient {
    * @returns The token balance.
    */
   public async getBalance(address: Address): Promise<Shard> {
-    const tokenContract = await this.tezos.contract.at(this.tokenAddress)
-    const tokenStorage: any = await tokenContract.storage()
-    const balance = await tokenStorage.balances.get(address)
-    return balance === undefined ? new BigNumber(0) : balance.balance
+    return getTokenBalance(address, this.tokenAddress, this.tezos)
   }
 }
