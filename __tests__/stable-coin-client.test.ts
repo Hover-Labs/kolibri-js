@@ -11,20 +11,22 @@ import BigNumber from 'bignumber.js'
  * These tests are not hermetic.
  */
 
-const NODE_URL = 'https://rpctest.tzbeta.net'
+const NODE_URL = 'https://sandbox.hover.engineering'
 
 // A test account
-// TODO(keefertaylor): Refactor these constants to helpers.
-const TEST_ACCOUNT_ADDRESS = 'tz1YfB2H1NoZVUq4heHqrVX4oVp99yz8gwNq'
-const TEST_ACCOUNT_SECRET = 'edsk3aeocSRnxdWVFm3ShaALUeCTy4PgL6JdeGvzbLjX5jn8D9ZXw5'
+const TEST_ACCOUNT_ADDRESS = 'tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb'
+const TEST_ACCOUNT_SECRET = 'edsk3QoqBuvdamxouPhin7swCvkQNgq4jP5KZPbwWNnwdZpSpJiEbq'
+
+// Contracts
+const CONTRACT_GROUP = CONTRACTS.SANDBOX
 
 // Token Client under test.
 const stableCoinClient = new StableCoinClient(
   NODE_URL,
-  Network.Delphi,
-  CONTRACTS.TEST.OVEN_REGISTRY!,
-  CONTRACTS.TEST.MINTER!,
-  CONTRACTS.TEST.OVEN_FACTORY!,
+  Network.Sandbox,
+  CONTRACT_GROUP.OVEN_REGISTRY!,
+  CONTRACT_GROUP.MINTER!,
+  CONTRACT_GROUP.OVEN_FACTORY!,
 )
 
 // Time to sleep to let operations settle.
