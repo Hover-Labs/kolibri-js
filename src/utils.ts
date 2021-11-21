@@ -33,9 +33,9 @@ export const deriveOvenAddress = async (operation: TransactionWalletOperation): 
 /**
  * Convert an interest rate per period into an APY.
  */
-export const interestRateToApy = async (interstRatePerPeriod: BigNumber): Promise<BigNumber> => {
+export const interestRateToApy = async (interestRatePerPeriod: BigNumber): Promise<BigNumber> => {
   const one = new BigNumber(1_000_000_000_000_000_000)
-  const initial = interstRatePerPeriod.plus(one)
+  const initial = interestRatePerPeriod.plus(one)
   let apy = one
   for (let n = 0; n < CONSTANTS.COMPOUNDS_PER_YEAR; n++) {
     apy = apy.times(initial).dividedBy(one)

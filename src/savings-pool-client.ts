@@ -80,12 +80,13 @@ export default class SavingsPoolClient {
     const savingsPoolContract = await this.tezos.wallet.at(this.savingsPoolAddress)
     const savingsPoolStorage: any = await savingsPoolContract.storage()
     const poolSize = savingsPoolStorage.underlyingBalance
-    const lastInterestUpdate = savingsPoolStorage.lastInterestCompoundTime
+    const lastInterestUpdateTime = savingsPoolStorage.lastInterestCompoundTime
     const interestRate = savingsPoolStorage.interestRate
 
     // TODO(keefertaylor): Similiar to the API in StableCoin client. Consider deduping / refactoring.
     const time = new Date()
-    const deltaMs = time.getTime() - lastInterestUpdate.getTime()
+    const lastUpdate = new Date(`${lastInterestUpdateTime}`)
+    const deltaMs = time.getTime() - lastUpdate.getTime()
     const deltaSecs = Math.floor(deltaMs / 1000)
     const numPeriods = Math.floor(deltaSecs / CONSTANTS.COMPOUND_PERIOD_SECONDS)
 
