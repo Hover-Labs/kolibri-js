@@ -1,6 +1,6 @@
 {
   "name": "@hover-labs/kolibri-js",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "SDK Code to Interact with Kolibri, a stablecoin built on Tezos",
   "main": "build/src/index.js",
   "files": [
@@ -48,6 +48,7 @@
     "bignumber.js": "^9.0.1",
     "blakejs": "^1.1.1",
     "bs58check": "^2.1.2",
+    "decimal.js": "^10.3.1",
     "lodash": "^4.17.21"
   }
 }
