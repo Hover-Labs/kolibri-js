@@ -5,6 +5,7 @@ import BigNumber from 'bignumber.js'
 import { compoundingLinearApproximation, getTokenBalance, interestRateToApy } from './utils'
 import CONSTANTS from './constants'
 import Address from './types/address'
+import Decimal from 'decimal.js'
 
 /**
  * Controls interaction with the Kolibri Savings Pool.
@@ -72,7 +73,7 @@ export default class SavingsPoolClient {
   /**
    * Get the interest rate of the pool.
    */
-  public async getInterestRateAPY(savingsPoolStorage: any | undefined = undefined): Promise<BigNumber> {
+  public async getInterestRateAPY(savingsPoolStorage: any | undefined = undefined): Promise<Decimal> {
     const resolvedSavingsPoolStorage = savingsPoolStorage ?? (await (await this.tezos.wallet.at(this.savingsPoolAddress)).storage() as any)
 
     const interestRate = resolvedSavingsPoolStorage.interestRate

@@ -10,6 +10,7 @@ import {
 import _ from "lodash";
 import BigNumber from 'bignumber.js'
 import CONSTANTS from './constants'
+import Decimal from "decimal.js"
 
 /**
  * Derive an oven address from the given operation.
@@ -33,14 +34,12 @@ export const deriveOvenAddress = async (operation: TransactionWalletOperation): 
 /**
  * Convert an interest rate per period into an APY.
  */
-export const interestRateToApy = async (interestRatePerPeriod: BigNumber): Promise<BigNumber> => {
-  const one = new BigNumber(10).pow(18)
-  const initial = interestRatePerPeriod.plus(one)
-  let apy = one
-  for (let n = 0; n < CONSTANTS.COMPOUNDS_PER_YEAR; n++) {
-    apy = apy.times(initial).dividedBy(one)
-  }
-  return apy.minus(one)
+export const interestRateToApy = async (interestRatePerPeriod: BigNumber): Promise<Decimal> => {
+  const currentValueNoMantissa = new BigNumber(interestRatePerPeriod).dividedBy(new BigNumber(10).pow(18))
+  const currentValueDecimal = new Decimal(currentValueNoMantissa.toFixed(18)).times((60 * 24 * 365))
+  const E = new Decimal("2.7182818284590452353602874713526624977572470936999595749669676277240766303535475945713821785251664274")
+  const invertedLN = E.pow(currentValueDecimal)
+  return invertedLN.minus(1).times(100)
 }
 
 /**

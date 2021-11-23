@@ -10,6 +10,7 @@ import BigNumber from 'bignumber.js'
 import axios, { AxiosResponse } from 'axios'
 import CONSTANTS from './constants'
 import { compoundingLinearApproximation, interestRateToApy } from './utils'
+import Decimal from 'decimal.js';
 
 /** The result of deploying an Oven. */
 export type OvenDeployResult = {
@@ -108,7 +109,7 @@ export default class StableCoinClient {
    *
    * @returns A number representing a percentage fee with 18 decimals of precision.
    */
-  public async getStabilityFeeApy(): Promise<Shard> {
+  public async getStabilityFeeApy(): Promise<Decimal> {
     const minterContract = await this.tezos.contract.at(this.minterAddress)
     const minterStorage: any = await minterContract.storage()
     const stabilityFee = await minterStorage.stabilityFee
