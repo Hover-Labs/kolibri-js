@@ -93,7 +93,7 @@ enum ContractErrors {
   NotSavingsAccount = 27,
 
   // The sender was not the expected contract
-  BadSener = 28
+  BadSender = 28
 }
 
 export default ContractErrors
