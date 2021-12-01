@@ -12,7 +12,8 @@ const contracts: ContractGroup = {
   HARBINGER_NORMALIZER: 'KT1SUP27JhX24Kvr11oUdWswk7FnCW78ZyUn',
 
   LIQUIDITY_POOL: 'KT19RUbUUizsy7arXiziEi9d2nfJNMG74KxS',
-
+  SAVINGS_POOL: null,
+  
   DEXES: {
     QUIPUSWAP: {
       POOL: 'KT1XcRsVNqvwRNyfoqZaKenPT2mQdLd2d8fS',
@@ -71,6 +72,7 @@ const contracts: ContractGroup = {
     STABILITY_FUND: 'KT1UZ87trx6AEEumGAkqYnvLHuN6YjWoJDos',
     ORACLE: 'KT1SowWqkYXHLKoHGufY5fWsu3hhTnjiPtCZ',
     LIQUIDITY_POOL: 'KT19DRghrW6DRx2EPdU2d3vtb3BFp4aafoj9',
+    SAVINGS_POOL: null,
     DAO_COMMUNITY_FUND: 'KT1AfVMYNWeopTmeidAgmJTjYwstNcwGsimF',
     VESTING_VAULTS: {
       tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V:
