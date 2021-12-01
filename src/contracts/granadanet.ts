@@ -1,7 +1,7 @@
 import { ContractGroup } from '../types/contracts'
 
 const contracts: ContractGroup = {
-  MINTER: 'KT1ScjqdAYcZ6JhwpZUvGTwRV7PNxknN8ZrN',
+  MINTER: 'KT1WG5yMCdbXz8T3YFSC1Rz2BYaqbnfLEdzH',
   OVEN_PROXY: 'KT1VRa3fE2VUDwTtuE9vnUVzsNnKgEeZeoDJ',
   OVEN_FACTORY: 'KT1X5uQDsyPnqwRmVyaoXMKKLLVmEytRaikq',
   TOKEN: 'KT1XUshaJCUzYpq4n6Vi9Nttzv3xJJiaBi1n',
@@ -62,7 +62,7 @@ const contracts: ContractGroup = {
   },
 
   BREAK_GLASS_CONTRACTS: {
-    MINTER: 'KT1Ck6L5U4trUpaAe1LfgjmS1JCi3LAWTdgN',
+    MINTER: 'KT1AtscwTtsqFhSZFGV4dYs1kdou75HXBe4C',
     OVEN_PROXY: 'KT1CHE9uRnAkNcVRFEb9oub2MFinQ98kirpz',
     OVEN_FACTORY: 'KT1AzLmbBV3X1Rw9xf4Vw8ge7pusXXo4XiQN',
     TOKEN: 'KT1WVWTANP6Sg7fFy3eX3Pd1PZiZ31jaqekN',
