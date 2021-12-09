@@ -76,9 +76,9 @@ export default class LiquidityPoolClient {
 
     // Changed fixed point numbers into decimals 
     const KUSD_MANTISSA = Math.pow(10, 18) // kUSD has 18 decimals
-    const LP_MANTISSA = Math.pow(10, 36).  // LP has 36 decimals
+    const LP_MANTISSA = Math.pow(10, 36)  // LP has 36 decimals
     const kUSDBalanceDecimal = poolBalance.dividedBy(KUSD_MANTISSA)
-    const lpBalanceDecimal = lpBalance.dividedBy(LP_MATISSA)
+    const lpBalanceDecimal = lpBalance.dividedBy(LP_MANTISSA)
 
     // Calculate an exchange rate
     // toFixed() will give you n digits of precision
