@@ -22,6 +22,7 @@ export default class LiquidityPoolClient {
     nodeUrl: string,
     wallet: InMemorySigner | TempleWallet,
     public readonly liquidityPoolAddress: Address,
+    public readonly kUSDAddress: Address,
   ) {
     const tezos = new TezosToolkit(nodeUrl)
 
@@ -56,15 +57,15 @@ export default class LiquidityPoolClient {
    */ 
   public async getExchangeRate(precision: number): Promise<string> {
     // Load kUSD Contract
-    const kUSDContract = await this.tezos.wallet.at(contracts.TOKEN)
+    const kUSDContract = await this.tezos.wallet.at(this.kUSDAddress)
     const kUSDStorage: any = await kUSDContract.storage()
 
     // Load Liq Pool Contract
-    const liqContract = await this.tezos.wallet.at(contracts.LIQUIDITY_POOL)
+    const liqContract = await this.tezos.wallet.at(this.liquidityPoolAddress)
     const liqStorage: any = await liqContract.storage()
 
     // Get number of kUSD in the liquidity pool
-    const poolBalance = await kUSDStorage.balances.get(contracts.LIQUIDITY_POOL)
+    const poolBalance = await kUSDStorage.balances.get(this.liquidityPoolAddress)
     if (poolBalance === undefined){
       this.poolBalance = new BigNumber(0)
     } else {
