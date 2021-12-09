@@ -82,7 +82,6 @@ export default class LiquidityPoolClient {
     const lpBalanceDecimal = lpBalance.dividedBy(LP_MANTISSA)
 
     // Calculate an exchange rate
-    // toFixed() will give you n digits of precision
-    const redeemRate = poolBalanceDecimal.dividedBy(lpBalanceDecimal).toFixed(2)
+    return poolBalanceDecimal.dividedBy(lpBalanceDecimal).toFixed(precision)
   }
 }
