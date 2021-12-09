@@ -57,11 +57,11 @@ export default class LiquidityPoolClient {
   public async getExchangeRate(precision: number): Promise<string> {
     // Load kUSD Contract
     const kUSDContract = await this.tezos.wallet.at(contracts.TOKEN)
-    const kUSDStorage = await kUSDContract.storage()
+    const kUSDStorage: any = await kUSDContract.storage()
 
     // Load Liq Pool Contract
     const liqContract = await this.tezos.wallet.at(contracts.LIQUIDITY_POOL)
-    const liqStorage = await liqContract.storage()
+    const liqStorage: any = await liqContract.storage()
 
     // Get number of kUSD in the liquidity pool
     const poolBalance = await kUSDStorage.balances.get(contracts.LIQUIDITY_POOL)
