@@ -99,24 +99,13 @@ export default class OvenClient {
   }
 
   /**
-   * Set the baker of the oven.
-   *
-   * @param baker The baker for the oven.
-   * @returns The operation hash
-   */
-  public async setBaker(baker: Address | null): Promise<TransactionOperation | TransactionWalletOperation> {
-    return this.invokeOvenMethod('setDelegate', baker)
-  }
-
-  /**
    * Retrieve the owner of the oven.
    *
    * @returns The address which owns the oven.
    */
-  public async getOwner(): Promise<Address> {
-    const ovenContract = await this.tezos.wallet.at(this.ovenAddress)
-    const ovenStorage: any = await ovenContract.storage()
-    return ovenStorage.owner
+  public async getOwner(ovenStorage: any | undefined = undefined): Promise<Address> {
+    const resolvedOvenStorage = ovenStorage ?? ((await (await this.tezos.wallet.at(this.ovenAddress)).storage()) as any)
+    return resolvedOvenStorage.owner
   }
 
   /**
@@ -127,10 +116,9 @@ export default class OvenClient {
    *
    * @returns The amount of tokens borrowed.
    */
-  public async getBorrowedTokens(): Promise<Shard> {
-    const ovenContract = await this.tezos.wallet.at(this.ovenAddress)
-    const ovenStorage: any = await ovenContract.storage()
-    return ovenStorage.borrowedTokens
+  public async getBorrowedTokens(ovenStorage: any | undefined = undefined): Promise<Shard> {
+    const resolvedOvenStorage = ovenStorage ?? ((await (await this.tezos.wallet.at(this.ovenAddress)).storage()) as any)
+    return resolvedOvenStorage.borrowedTokens
   }
 
   /**
@@ -140,10 +128,14 @@ export default class OvenClient {
    * breakdowns, see `getStabilityFees` and `getBorrowedTokens`.
    *
    * @param time The time to calculate the values at. Defaults to the current time.
+   * @param ovenStorage The pre-fetched oven storage
    * @returns The amount of tokens owed in stability fees.
    */
-  public async getTotalOutstandingTokens(time: Date = new Date()): Promise<Shard> {
-    const stabilityFees = await this.getStabilityFees(time)
+  public async getTotalOutstandingTokens(
+    time: Date = new Date(),
+    ovenStorage: any | undefined = undefined,
+  ): Promise<Shard> {
+    const stabilityFees = await this.getStabilityFees(time, ovenStorage)
     const borrowedTokens = await this.getBorrowedTokens()
     return stabilityFees.plus(borrowedTokens)
   }
@@ -152,16 +144,16 @@ export default class OvenClient {
    * Retrieve the number of tokens owed in stability fees against the oven.
    *
    * @param time The time to calculate the values at. Defaults to the current time.
+   * @param ovenStorage The pre-fetched oven storage
    * @returns Interest rate data for the system.
    */
-  public async getStabilityFees(time: Date = new Date()): Promise<Shard> {
-    const ovenContract = await this.tezos.wallet.at(this.ovenAddress)
-    const ovenStorage: any = await ovenContract.storage()
-    const stabilityFeeTokens: BigNumber = ovenStorage.stabilityFeeTokens
+  public async getStabilityFees(time: Date = new Date(), ovenStorage: any | undefined = undefined): Promise<Shard> {
+    const resolvedOvenStorage = ovenStorage ?? ((await (await this.tezos.wallet.at(this.ovenAddress)).storage()) as any)
+    const stabilityFeeTokens: BigNumber = resolvedOvenStorage.stabilityFeeTokens
 
     const interestData = await this.stableCoinClient.getInterestData(time)
-    const ovenInterestIndex: BigNumber = ovenStorage.interestIndex
-    const borrowedTokens = await this.getBorrowedTokens()
+    const ovenInterestIndex: BigNumber = resolvedOvenStorage.interestIndex
+    const borrowedTokens = await this.getBorrowedTokens(ovenStorage)
     const minterInterestIndex: BigNumber = interestData.globalInterestIndex
 
     const ratio = minterInterestIndex.times(SHARD_PRECISION).div(ovenInterestIndex).integerValue()
@@ -175,10 +167,9 @@ export default class OvenClient {
    *
    * @returns A boolean representing the liquidation state.
    */
-  public async isLiquidated(): Promise<boolean> {
-    const ovenContract = await this.tezos.wallet.at(this.ovenAddress)
-    const ovenStorage: any = await ovenContract.storage()
-    return ovenStorage.isLiquidated
+  public async isLiquidated(ovenStorage: any | undefined = undefined): Promise<boolean> {
+    const resolvedOvenStorage = ovenStorage ?? ((await (await this.tezos.wallet.at(this.ovenAddress)).storage()) as any)
+    return resolvedOvenStorage.isLiquidated
   }
 
   /**
@@ -188,6 +179,16 @@ export default class OvenClient {
    */
   public async getBalance(): Promise<Mutez> {
     return await this.tezos.tz.getBalance(this.ovenAddress)
+  }
+
+  /**
+   * Set the baker of the oven.
+   *
+   * @param baker The baker for the oven.
+   * @returns The operation hash
+   */
+  public async setBaker(baker: Address | null): Promise<TransactionOperation | TransactionWalletOperation> {
+    return this.invokeOvenMethod('setDelegate', baker)
   }
 
   /**
