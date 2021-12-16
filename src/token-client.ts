@@ -4,7 +4,7 @@ import BigNumber from 'bignumber.js'
 import { getTokenBalance } from './utils'
 import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
 import { TransactionOperation } from '@taquito/taquito/dist/types/operations/transaction-operation'
-import { TempleWallet } from "@temple-wallet/dapp";
+import { TempleWallet } from '@temple-wallet/dapp'
 import { InMemorySigner } from '@taquito/signer'
 
 /** Interacts with the Untitled Stable Coin project's token. */
@@ -23,7 +23,7 @@ export default class TokenClient {
 
   /**
    * Approve an allowance for an FA1.2 token
-   * 
+   *
    * @param spender The account who can spend
    * @param amount The amount to spend
    * @param wallet The wallet that will approve
@@ -44,7 +44,6 @@ export default class TokenClient {
     const tokenContract = await this.tezos.contract.at(this.tokenAddress)
     return tokenContract.methods.approve(spender, amount).send()
   }
-
 
   /**
    * Get the balance of tokens for a user.

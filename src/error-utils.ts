@@ -54,7 +54,7 @@ const ErrorUtils = {
       }
     }
 
-    // If no match was found, return Uknown.
+    // If no match was found, return Unknown.
     return ContractError.Unknown
   },
 }

@@ -1,7 +1,7 @@
 import Network from './network'
 import Address from './types/address'
 import OperationHash from './types/operation-hash'
-import { TempleWallet } from "@temple-wallet/dapp";
+import { TempleWallet } from '@temple-wallet/dapp'
 import { InMemorySigner } from '@taquito/signer'
 import Shard from './types/shard'
 import { TezosToolkit, TransactionWalletOperation } from '@taquito/taquito'
@@ -10,7 +10,7 @@ import BigNumber from 'bignumber.js'
 import axios, { AxiosResponse } from 'axios'
 import CONSTANTS from './constants'
 import { compoundingLinearApproximation, interestRateToApy } from './utils'
-import Decimal from 'decimal.js';
+import Decimal from 'decimal.js'
 
 /** The result of deploying an Oven. */
 export type OvenDeployResult = {
@@ -165,7 +165,7 @@ export default class StableCoinClient {
     const globalInterestIndexApproximation = compoundingLinearApproximation(
       globalInterestIndex,
       simpleStabilityFee,
-      numPeriods
+      numPeriods,
     )
     return {
       globalInterestIndex: globalInterestIndexApproximation,

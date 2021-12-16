@@ -83,7 +83,7 @@ enum ContractErrors {
   // The operation was not performed by the token administrator.
   TokenNotAdministrator = 24,
 
-  /// The splits given did not sum to one.
+  // The splits given did not sum to one.
   BadSplits = 25,
 
   // The sender was not allowed to liquidate, even though the oven was undercollateralized
@@ -93,7 +93,7 @@ enum ContractErrors {
   NotSavingsAccount = 27,
 
   // The sender was not the expected contract
-  BadSender = 28
+  BadSender = 28,
 }
 
 export default ContractErrors

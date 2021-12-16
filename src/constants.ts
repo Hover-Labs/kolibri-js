@@ -11,7 +11,7 @@ const CONSTANTS = {
   COMPOUNDS_PER_YEAR: (365 * 24 * 60 * 60) / COMPOUND_PERIOD_SECONDS, // (Number of seconds in year) / (seconds per compound)
 
   /** The number of decimals in smart contract precision */
-  PRECISION: new BigNumber(Math.pow(10, 18))
+  PRECISION: new BigNumber(Math.pow(10, 18)),
 }
 
 export default CONSTANTS
