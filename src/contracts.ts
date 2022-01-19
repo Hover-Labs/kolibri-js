@@ -5,12 +5,12 @@
 import { Contracts } from './types/contracts'
 
 import MAINNET from './contracts/mainnet'
-import GRANADANET from './contracts/granadanet'
+import HANGZHOUNET from './contracts/hangzhounet'
 import SANDBOXNET from './contracts/sandbox'
 
 const CONTRACTS: Contracts = {
-  ZERO: GRANADANET,
-  TEST: GRANADANET,
+  ZERO: HANGZHOUNET,
+  TEST: HANGZHOUNET,
   MAIN: MAINNET,
   SANDBOX: SANDBOXNET,
 }
