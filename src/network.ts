@@ -7,6 +7,7 @@ enum Network {
   Edo2Net = 'edo2net',
   Florence = 'florencenet',
   Granada = 'granadanet',
+  Hangzhou = 'hangzhounet',
   Sandbox = 'sandboxnet',
 }
 
