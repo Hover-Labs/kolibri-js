@@ -51,6 +51,10 @@ const contracts: ContractGroup = {
       farm: 'KT1TscJ89RMksEb4CEca41hJo49Fyhicmqgv',
       reserve: 'KT1UpoukRNFNYykzuSxjVqfUXa5ApzUcPqZB',
     },
+    YOUVES_FLAT: {
+      farm: null,
+      reserve: null,
+    }
   },
 
   VESTING_CONTRACTS: {

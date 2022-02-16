@@ -13,7 +13,7 @@ const contracts: ContractGroup = {
 
   LIQUIDITY_POOL: 'KT19RUbUUizsy7arXiziEi9d2nfJNMG74KxS',
   SAVINGS_POOL: null,
-  
+
   DEXES: {
     QUIPUSWAP: {
       POOL: 'KT1XcRsVNqvwRNyfoqZaKenPT2mQdLd2d8fS',
@@ -51,6 +51,10 @@ const contracts: ContractGroup = {
       farm: 'KT1NarJp1kXFKaSqDoRhtj53eMFuLP1GRTz3',
       reserve: 'KT1EuDcUmubxJgfZcXXpvSiPkahJpW5nMFQ3',
     },
+    YOUVES_FLAT: {
+      farm: null,
+      reserve: null,
+    }
   },
 
   VESTING_CONTRACTS: {

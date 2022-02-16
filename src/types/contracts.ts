@@ -60,6 +60,10 @@ export type ContractGroup = {
     KUSD_LP: {
       farm: DeployedContractAddressOrNull
       reserve: DeployedContractAddressOrNull
+    },
+    YOUVES_FLAT: {
+      farm: DeployedContractAddressOrNull
+      reserve: DeployedContractAddressOrNull
     }
   }
 
