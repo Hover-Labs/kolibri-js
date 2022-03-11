@@ -56,15 +56,54 @@ export default class OvenClient {
   }
 
   /**
+   * Retrieve the utilization of collateral in the oven. 
+   * 
+   * This number represents how much of the user's maximum borrow limit is used. If the number is greater than 1, the 
+   * user may be liquidated. 
+   * 
+   * Mathematically, this is defined as:
+   * collateral utilization =  (amount borrowed) / (amount you can borrow)
+   * collateral utilization = = (borrowed kUSD) / (amount of XTZ in Oven * Price of XTZ / collateral requirement)
+   * 
+   * @returns The collateral utilization ratio as an integer with 18 digits of precision (ex. 80% is represented as 
+   *          800_000_000_000_000_000)
+   */
+  public async getCollateralUtilization(): Promise<Shard> {
+    // Get XTZ price as a shard.
+    const { price } = await this.harbingerClient.getPriceData()
+    const priceShard = price.multipliedBy(MUTEZ_TO_SHARD) // 18 digits
+
+    // Get the current XTZ balanace of the oven.
+    const currentBalance = await this.getBalance() // 18 digits
+
+    // Get value of collateral as a shard.
+    const collateralValue = currentBalance.multipliedBy(MUTEZ_TO_SHARD).multipliedBy(priceShard).dividedBy(SHARD_PRECISION) // 18 digits
+
+    // Get borrowed collateral as a shard.
+    const totalBorrowedTokens = await this.getTotalOutstandingTokens() // 18 digits
+
+    return totalBorrowedTokens.times(SHARD_DIGITS).dividedBy(collateralValue)
+  }
+
+  /**
    * Retrieve the collateralization ratio of the oven.
    *
+   * @deprecated This method returns a number that isn't particularly useful and may be removed in a future version
+   *             of this library. Please use `getCollateralUtilization` instead.
+   * TODO(keefertaylor): Remove this method.
+   * 
    * @returns The collateralization ratio as a shard.
    */
   public async getCollateralizationRatio(): Promise<Shard> {
-    // Get price as a shard.
+    console.warn('This method is deprecated and probably isn\'t giving you the value you expect. Consider using `getCollateralUtilization` instead')
+
+    // Get XTZ price as a shard.
     const { price } = await this.harbingerClient.getPriceData()
     const priceShard = price.multipliedBy(MUTEZ_TO_SHARD)
+
+    // Get the current XTZ balanace of the oven.
     const currentBalance = await this.getBalance()
+
     // Get value of collateral as a shard.
     const collateralValue = currentBalance.multipliedBy(MUTEZ_TO_SHARD).multipliedBy(priceShard)
     const collateralValueInkUSD = collateralValue.multipliedBy(SHARD_PRECISION)
