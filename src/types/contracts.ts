@@ -60,14 +60,16 @@ export type ContractGroup = {
     KUSD_LP: {
       farm: DeployedContractAddressOrNull
       reserve: DeployedContractAddressOrNull
-    },
+    }
     YOUVES_FLAT: {
       farm: DeployedContractAddressOrNull
       reserve: DeployedContractAddressOrNull
     }
   }
 
-  VESTING_CONTRACTS: { [key: string]: DeployedContractAddressOrNull }
+  PAYMENT_VAULTS: {
+    [key: string]: string[]
+  }
 
   BREAK_GLASS_CONTRACTS: {
     MINTER: DeployedContractAddressOrNull
@@ -81,8 +83,8 @@ export type ContractGroup = {
     LIQUIDITY_POOL: DeployedContractAddressOrNull
     SAVINGS_POOL: DeployedContractAddressOrNull
     DAO_COMMUNITY_FUND: DeployedContractAddressOrNull
-    VESTING_VAULTS: {
-      [key: string]: DeployedContractAddressOrNull
+    PAYMENT_VAULTS: {
+      [key: string]: string[]
     }
   }
 }
