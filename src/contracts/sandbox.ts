@@ -44,10 +44,10 @@ const contracts: ContractGroup = {
     YOUVES_FLAT: {
       farm: null,
       reserve: null,
-    }
+    },
   },
-  VESTING_CONTRACTS: {
-    tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: 'KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav',
+  PAYMENT_VAULTS: {
+    tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: ['KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav'],
   },
   BREAK_GLASS_CONTRACTS: {
     MINTER: 'KT1Q5N3KZtsyo7TTLFfWSmk98bBaFdFe44hm',
@@ -61,8 +61,8 @@ const contracts: ContractGroup = {
     LIQUIDITY_POOL: 'KT1Xpj5rigkMK3TNexHiehkVnscWKRyyyJBb',
     SAVINGS_POOL: 'KT1WnKoVnBWPA8VUqMYfVfMgiX6pda5Z8gNn',
     DAO_COMMUNITY_FUND: 'KT1SVzcqJE9Hvo5PjtxRTTYSThpQEaaFNGHy',
-    VESTING_VAULTS: {
-      KT1N8xjKYSawu93uG8LuTHPsYPMeGdWQHffL: 'KT193RkaYfHLoH3KbNnqY5mFnBnjLKHW72Uu',
+    PAYMENT_VAULTS: {
+      KT1N8xjKYSawu93uG8LuTHPsYPMeGdWQHffL: ['KT193RkaYfHLoH3KbNnqY5mFnBnjLKHW72Uu'],
     },
   },
 }

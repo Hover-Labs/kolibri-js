@@ -56,16 +56,16 @@ export default class OvenClient {
   }
 
   /**
-   * Retrieve the utilization of collateral in the oven. 
-   * 
-   * This number represents how much of the user's maximum borrow limit is used. If the number is greater than 1, the 
-   * user may be liquidated. 
-   * 
+   * Retrieve the utilization of collateral in the oven.
+   *
+   * This number represents how much of the user's maximum borrow limit is used. If the number is greater than 1, the
+   * user may be liquidated.
+   *
    * Mathematically, this is defined as:
    * collateral utilization =  (amount borrowed) / (amount you can borrow)
    * collateral utilization = = (borrowed kUSD) / (amount of XTZ in Oven * Price of XTZ / collateral requirement)
-   * 
-   * @returns The collateral utilization ratio as an integer with 18 digits of precision (ex. 80% is represented as 
+   *
+   * @returns The collateral utilization ratio as an integer with 18 digits of precision (ex. 80% is represented as
    *          800_000_000_000_000_000)
    */
   public async getCollateralUtilization(): Promise<Shard> {
@@ -77,7 +77,10 @@ export default class OvenClient {
     const currentBalance = await this.getBalance() // 18 digits
 
     // Get value of collateral as a shard.
-    const collateralValue = currentBalance.multipliedBy(MUTEZ_TO_SHARD).multipliedBy(priceShard).dividedBy(SHARD_PRECISION) // 18 digits
+    const collateralValue = currentBalance
+      .multipliedBy(MUTEZ_TO_SHARD)
+      .multipliedBy(priceShard)
+      .dividedBy(SHARD_PRECISION) // 18 digits
 
     // Get borrowed collateral as a shard.
     const totalBorrowedTokens = await this.getTotalOutstandingTokens() // 18 digits
@@ -91,11 +94,13 @@ export default class OvenClient {
    * @deprecated This method returns a number that isn't particularly useful and may be removed in a future version
    *             of this library. Please use `getCollateralUtilization` instead.
    * TODO(keefertaylor): Remove this method.
-   * 
+   *
    * @returns The collateralization ratio as a shard.
    */
   public async getCollateralizationRatio(): Promise<Shard> {
-    console.warn('This method is deprecated and probably isn\'t giving you the value you expect. Consider using `getCollateralUtilization` instead')
+    console.warn(
+      "This method is deprecated and probably isn't giving you the value you expect. Consider using `getCollateralUtilization` instead",
+    )
 
     // Get XTZ price as a shard.
     const { price } = await this.harbingerClient.getPriceData()

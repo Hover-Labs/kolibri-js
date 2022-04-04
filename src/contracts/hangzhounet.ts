@@ -54,16 +54,13 @@ const contracts: ContractGroup = {
     YOUVES_FLAT: {
       farm: null,
       reserve: null,
-    }
+    },
   },
 
-  VESTING_CONTRACTS: {
-    tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V:
-      'KT1UpziYhnqkLmhHhjBKAf4Z4VqPDW9jaK7J',
-    tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB:
-      'KT1NVBwsunSuFwxUWki5Y5ZW7voaXahGUpWf',
-    tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV:
-      'KT1D1UyDWN2Q52SENuWjq8DdxVqqsmqQT1JQ',
+  PAYMENT_VAULTS: {
+    tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V: ['KT1UpziYhnqkLmhHhjBKAf4Z4VqPDW9jaK7J'],
+    tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB: ['KT1NVBwsunSuFwxUWki5Y5ZW7voaXahGUpWf'],
+    tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV: ['KT1D1UyDWN2Q52SENuWjq8DdxVqqsmqQT1JQ'],
   },
 
   BREAK_GLASS_CONTRACTS: {
@@ -78,13 +75,10 @@ const contracts: ContractGroup = {
     LIQUIDITY_POOL: 'KT1GgmsuYQKGZijaftRELjHuTUF7bFvHurY3',
     SAVINGS_POOL: null,
     DAO_COMMUNITY_FUND: 'KT197Z7Ajs3xDzACJgJH2GS4c3HkwKyiKC7A',
-    VESTING_VAULTS: {
-      tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V:
-        'KT1MzxAPTk1rcrf3QtfPFQdAG3TCCpwzBqGB',
-      tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB:
-        'KT1X4ZjbEWSPZsMbBy9FT5LfhWfUQHG6dvD9',
-      tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV:
-        'KT1Kb5Pd9KtZ3RzoQnu1jrkskbGJG94fRhcb',
+    PAYMENT_VAULTS: {
+      tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V: ['KT1MzxAPTk1rcrf3QtfPFQdAG3TCCpwzBqGB'],
+      tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB: ['KT1X4ZjbEWSPZsMbBy9FT5LfhWfUQHG6dvD9'],
+      tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV: ['KT1Kb5Pd9KtZ3RzoQnu1jrkskbGJG94fRhcb'],
     },
   },
 }
