@@ -67,8 +67,14 @@ export type ContractGroup = {
     }
   }
 
+  // A user may have multiple payment vaults. Voting vaults should be a subset
   PAYMENT_VAULTS: {
     [key: string]: string[]
+  }
+
+  // A user only has one "voting vault" and we'll use this for the DAO frontend
+  VOTING_VAULTS: {
+    [key: string]: string
   }
 
   BREAK_GLASS_CONTRACTS: {
@@ -83,6 +89,7 @@ export type ContractGroup = {
     LIQUIDITY_POOL: DeployedContractAddressOrNull
     SAVINGS_POOL: DeployedContractAddressOrNull
     DAO_COMMUNITY_FUND: DeployedContractAddressOrNull
+    // All payment vaults should also capture all voting vaults
     PAYMENT_VAULTS: {
       [key: string]: string[]
     }

@@ -63,6 +63,12 @@ const contracts: ContractGroup = {
     tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV: ['KT1D1UyDWN2Q52SENuWjq8DdxVqqsmqQT1JQ'],
   },
 
+  VOTING_VAULTS: {
+    tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V: 'KT1UpziYhnqkLmhHhjBKAf4Z4VqPDW9jaK7J',
+    tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB: 'KT1NVBwsunSuFwxUWki5Y5ZW7voaXahGUpWf',
+    tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV: 'KT1D1UyDWN2Q52SENuWjq8DdxVqqsmqQT1JQ',
+  },
+
   BREAK_GLASS_CONTRACTS: {
     MINTER: 'KT1PuF7NbRKZTyxHsijboUobFrSQFFCG2uDf',
     OVEN_PROXY: 'KT1HeWCmuEGsyE3czZ33hz1ViZYQF9xu8jLH',
