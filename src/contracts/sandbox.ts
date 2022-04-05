@@ -49,6 +49,9 @@ const contracts: ContractGroup = {
   PAYMENT_VAULTS: {
     tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: ['KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav'],
   },
+  VOTING_VAULTS: {
+    tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: 'KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav'
+  },
   BREAK_GLASS_CONTRACTS: {
     MINTER: 'KT1Q5N3KZtsyo7TTLFfWSmk98bBaFdFe44hm',
     OVEN_PROXY: 'KT1T4qDyNsGEnxprtChrL59Hmaw6iLUDEtuz',
@@ -62,7 +65,7 @@ const contracts: ContractGroup = {
     SAVINGS_POOL: 'KT1WnKoVnBWPA8VUqMYfVfMgiX6pda5Z8gNn',
     DAO_COMMUNITY_FUND: 'KT1SVzcqJE9Hvo5PjtxRTTYSThpQEaaFNGHy',
     PAYMENT_VAULTS: {
-      KT1N8xjKYSawu93uG8LuTHPsYPMeGdWQHffL: ['KT193RkaYfHLoH3KbNnqY5mFnBnjLKHW72Uu'],
+      tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: ['KT1N8xjKYSawu93uG8LuTHPsYPMeGdWQHffL'],
     },
   },
 }
