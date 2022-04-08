@@ -58,12 +58,21 @@ const contracts: ContractGroup = {
   },
 
   PAYMENT_VAULTS: {
+    // Protocol founders grants
     tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V: ['KT1JyC6ShDjT9DtdjZAjWFsvuQuev2f49UXn'],
     tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV: ['KT1A4N9amP26gjPknxAsVZNP5xgLGu4yqKka'],
     tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB: ['KT1TDgMJA7daH2Dg271dXV3SAMLfhd4kiJGb'],
+
+    // BongoCats Grant - https://governance.kolibri.finance/proposals/26
+    tz1LN3hTUtg8eohArm2T1S4wwxbbrY4umr3a: ['KT18p9uowCTqYZ5vnP2w3DQaErFSUZ6ancLS'],
+    // Levaki - https://governance.kolibri.finance/proposals/26
+    tz1fxDQFyL3QEhV2jgSd3YqKx2FKj5yA63RK: ['KT1DhZVp3oZgqH3rACrjckSD6znTx4B6UHTN'],
+    // WolverME - https://governance.kolibri.finance/proposals/26
+    tz1bthMuA6Yzgqnp5dtQanF6C98USvgTJYSg: ['KT1DtzEqqaALZc3r6GSQQU9DEEw77FNRfxop'],
   },
 
   VOTING_VAULTS: {
+    // Protocol founders grants
     tz1YeYpdJshsXxkPdSdKUJaF1QmH1ngCrJ7V: 'KT1JyC6ShDjT9DtdjZAjWFsvuQuev2f49UXn',
     tz1cNABC2qtbbHKDDKdvxRkcyopL1kEfbpgV: 'KT1A4N9amP26gjPknxAsVZNP5xgLGu4yqKka',
     tz1Xh11mHYWxbYHv55AVhsPPPJeSp8PunERB: 'KT1TDgMJA7daH2Dg271dXV3SAMLfhd4kiJGb',
