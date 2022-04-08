@@ -41,8 +41,8 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@taquito/signer": "^11.2.0",
-    "@taquito/taquito": "^11.2.0",
+    "@taquito/signer": "^12.0.2",
+    "@taquito/taquito": "^12.0.2",
     "@temple-wallet/dapp": "^5.0.2",
     "axios": "^0.21.0",
     "bignumber.js": "^9.0.1",
