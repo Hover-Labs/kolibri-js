@@ -85,7 +85,7 @@ export default class OvenClient {
     // Get borrowed collateral as a shard.
     const totalBorrowedTokens = await this.getTotalOutstandingTokens() // 18 digits
 
-    return totalBorrowedTokens.times(SHARD_DIGITS).dividedBy(collateralValue)
+    return new BigNumber(totalBorrowedTokens.times(Math.pow(10, SHARD_DIGITS)).dividedBy(collateralValue).toFixed(0))
   }
 
   /**
