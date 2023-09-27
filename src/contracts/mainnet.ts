@@ -1,7 +1,7 @@
 import { ContractGroup } from '../types/contracts'
 
 const contracts: ContractGroup = {
-  MINTER: 'KT1LXVbM8Lhf5HV3C5ebhQWp4H1rezMCfMKz',
+  MINTER: 'KT1UcPwP7Usus8pFFXVQPcW5VZpkhf3LZZ1X',
   OVEN_PROXY: 'KT1JdufSdfg3WyxWJcCRNsBFV9V3x9TQBkJ2',
   OVEN_FACTORY: 'KT1Mgy95DVzqVBNYhsW93cyHuB57Q94UFhrh',
   TOKEN: 'KT1K9gCRgaLRFKTErYt1wVxA3Frb9FjasjTV',
