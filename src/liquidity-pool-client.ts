@@ -22,6 +22,7 @@ export default class LiquidityPoolClient {
     nodeUrl: string,
     wallet: InMemorySigner | TempleWallet,
     public readonly liquidityPoolAddress: Address,
+    public readonly kUSDAddress: Address,
   ) {
     const tezos = new TezosToolkit(nodeUrl)
 
@@ -47,5 +48,40 @@ export default class LiquidityPoolClient {
     const liquidityPoolContract = await this.tezos.wallet.at(this.liquidityPoolAddress)
     const sendArgs = { amount: 0, mutez: true }
     return await liquidityPoolContract.methods['liquidate'](targetOvenAddress).send(sendArgs)
+  }
+  
+  /**
+   * Get the exchange rate of 1 LP token to kUSD as a string.
+   *
+   * @param precision The number of decimals to included
+   */ 
+  public async getExchangeRate(precision: number): Promise<string> {
+    // Load kUSD Contract
+    const kUSDContract = await this.tezos.wallet.at(this.kUSDAddress)
+    const kUSDStorage: any = await kUSDContract.storage()
+
+    // Load Liq Pool Contract
+    const liqContract = await this.tezos.wallet.at(this.liquidityPoolAddress)
+    const liqStorage: any = await liqContract.storage()
+
+    // Get number of kUSD in the liquidity pool
+    const poolBalance = await kUSDStorage.balances.get(this.liquidityPoolAddress)
+    if (poolBalance === undefined){
+      this.poolBalance = new BigNumber(0)
+    } else {
+      this.poolBalance = poolBalance.balance
+    } 
+
+    // Get number of LP tokens outstanding
+    const lpBalance = liqStorage.totalSupply
+
+    // Changed fixed point numbers into decimals 
+    const KUSD_MANTISSA = Math.pow(10, 18) // kUSD has 18 decimals
+    const LP_MANTISSA = Math.pow(10, 36)  // LP has 36 decimals
+    const kUSDBalanceDecimal = poolBalance.dividedBy(KUSD_MANTISSA)
+    const lpBalanceDecimal = lpBalance.dividedBy(LP_MANTISSA)
+
+    // Calculate an exchange rate
+    return poolBalanceDecimal.dividedBy(lpBalanceDecimal).toFixed(precision)
   }
 }
