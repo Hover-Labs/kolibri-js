@@ -6,15 +6,17 @@ import BigNumber from 'bignumber.js'
  * Tests for Harbinger client.
  *
  * These tests are not hermetic.
+ *
+ * Using the new mainnet Youves Oracle contract's view as contract not deployed to sandbox.
  */
 
-const NODE_URL = 'https://sandbox.hover.engineering'
+const NODE_URL = 'https://mainnet.smartpy.io'
 
 // Allow extra time for RPCs
 jest.setTimeout(30_000) // 30 seconds
 
 // Client under test
-const harbingerClient = new HarbingerClient(NODE_URL, CONTRACTS.SANDBOX.HARBINGER_NORMALIZER!)
+const harbingerClient = new HarbingerClient(NODE_URL, CONTRACTS.MAIN.YOUVES_PROXY!, CONTRACTS.MAIN.OVEN_PROXY!)
 
 test('harbinger client - gets date', async function () {
   // GIVEN a Harbinger Client

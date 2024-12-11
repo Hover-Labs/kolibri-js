@@ -12,6 +12,7 @@ export type ContractGroup = {
 
   // Dependent contracts
   HARBINGER_NORMALIZER: DeployedContractAddressOrNull
+  YOUVES_PROXY: DeployedContractAddressOrNull
 
   // Kolibri Liquidity Pool
   LIQUIDITY_POOL: DeployedContractAddressOrNull

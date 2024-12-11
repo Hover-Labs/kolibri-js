@@ -10,6 +10,7 @@ const contracts: ContractGroup = {
   STABILITY_FUND: 'KT1EcNmD12afdpSSKi98fKh8sS3zEecWrZ5w',
   ORACLE: 'KT1HBPxqRKLWFs3ttM3fq3vyhp4bods6iam7',
   HARBINGER_NORMALIZER: 'KT1JFhDzhu6UDFFpNVLUoBtVQG5DGztSuiEn',
+  YOUVES_PROXY: null,
   LIQUIDITY_POOL: 'KT1SRz4kQsXTc38UVJjWJMLBr82Dh5j8RF9i',
   SAVINGS_POOL: 'KT1CVJDSJ9Lr6zQxVtcgwuCJjZ5SQCcWDFrv',
   DEXES: {
@@ -50,7 +51,7 @@ const contracts: ContractGroup = {
     tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: ['KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav'],
   },
   VOTING_VAULTS: {
-    tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: 'KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav'
+    tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: 'KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav',
   },
   BREAK_GLASS_CONTRACTS: {
     MINTER: 'KT1Q5N3KZtsyo7TTLFfWSmk98bBaFdFe44hm',
