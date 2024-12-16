@@ -50,7 +50,7 @@ const contracts: ContractGroup = {
     tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: ['KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav'],
   },
   VOTING_VAULTS: {
-    tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: 'KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav'
+    tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb: 'KT1XUKeMZDTeAQNEYrhif61BkcSjbERR6Kav',
   },
   BREAK_GLASS_CONTRACTS: {
     MINTER: 'KT1Q5N3KZtsyo7TTLFfWSmk98bBaFdFe44hm',

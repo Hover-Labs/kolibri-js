@@ -31,6 +31,7 @@ module.exports = {
         browser: true, // Enable browser global variables
         node: true, // Enable node global variables & Node.js scoping
         es2020: true, // Add all ECMAScript 2020 globals and automatically set the ecmaVersion parser option to ES2020
+        es2022: true, // Add all ECMAScript 2022 globals and automatically set the ecmaVersion parser option to ES2022
         jest: true, // Add Jest testing global variables
     },
 

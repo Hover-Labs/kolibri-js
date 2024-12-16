@@ -19,7 +19,7 @@ import Decimal from 'decimal.js'
  * @returns The address of the oven.
  */
 export const deriveOvenAddress = async (operation: TransactionWalletOperation): Promise<Address> => {
-  const ovenCreationResults: Array<OperationContentsAndResult> = await operation.operationResults()
+  const ovenCreationResults: Array<OperationContentsAndResult> = (await operation.operationResults()) || []
 
   const transactionResult: OperationContentsAndResultTransaction = _.find(
     ovenCreationResults,
